@@ -48,8 +48,10 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot[R]{\footnotesize\iffootnote{\thepage}{\thepage}}
+\fancyhead[L]{\footnotesize \ifnum\value{page}>1 Siglas del Nombre y Apellido completo del Primer Autor et al. \fi}
+\fancyfoot[C]{\footnotesize \thepage}
 \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0.4pt}
 \usepackage[bottom]{footmisc}
 
 \usepackage{enumitem} % Modificar los estilos de las listas
@@ -82,47 +84,99 @@
 \title{\vspace{-4em}\includegraphics[height=2cm]{images/logo_fio.png}\hspace{3cm}\includegraphics[height=2cm]{images/logo_ingenio.png}\\\vspace{1em}
 \large\textbf{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% T Í T U L O %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Preparación de Artículos para JIDeTEV – Escriba aquí el Título
+Título del Artículo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }}
 
 % Autores
 \author{\normalsize
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% A U T O R E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Primer A. Autor$^{1}$\footnote{Autor en correspondencia.} \and \normalsize
-Segundo B. Autor$^{2}$ \and \normalsize
-Tercer C. Autor$^{3}$
+Nombre/s y Apellido/s$^{1}$\footnote{Autor en correspondencia.} \and \normalsize
+Nombre/s y Apellido/s$^{2}$ \and \normalsize
+Nombre/s y Apellido/s$^{3}$ \and \normalsize
+Nombre/s y Apellido/s$^{3,4}$ \and \normalsize
+Nombre/s y Apellido/s$^{3,5}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }
 
 % Afiliaciones, en lugar de fecha
-\date{\footnotesize{\vspace{-2em}\singlespacing{\textit{
+\date{\footnotesize{\textit{
 %%%%%%%%%%%%%%%%%%%%%%%%%%% A F I L I A C I O N E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-$^{1}$Facultad de Ingeniería, Universidad Nacional de Misiones (UNaM), Oberá, Misiones, Argentina \\
-$^{2}$GID-IE, FI-UNaM, Oberá, Misiones, Argentina \\
-$^{3}$LABSE, FI-UNaM, Juan Manuel de Rosas 325, Oberá, Misiones, Argentina \\ \vspace{-0.5em}}
-e-mails: autor1@fio.unam.edu.ar$^{1}$, autor2@fio.unam.edu.ar$^{2}$, autor3@fio.unam.edu.ar$^{3}$
+$^{1}$Universidad Nacional de Misiones (UNaM). Facultad de Ingeniería. Dpto. de
+Ing. Industrial. Laboratorio de Gestión Tecnológica. Misiones, Argentina \\
+$^{2}$Universidad Nacional de Misiones–CONICET. Facultad de Ingeniería.
+Instituto de Materiales de Misiones (IMAM) Grupo de Investigación y Desarrollo
+en Electrónica (GIDE). Oberá, Misiones, Argentina \\ 
+$^{3}$Universidad Amazónica del Ecuador (UAE). Facultad de Ingeniería. Dpto. de
+Industrias. Ecuador \\
+e-mails: emailauthor1$^{1}$, emailauthor2$^{2}$, emailauthor3$^{3}$,
+emailauthor4$^{4}$, emailauthor5$^{5}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
 }}}
 
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
-\vspace{-2em}\hrule
 
+\vspace{-1em}\hrule
 \begin{abstract}\vspace{-2em}\singlespacing{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% R E S U M E N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Estas instrucciones constituyen una guía para la preparación de artículos científico-tecnológicos de las Jornadas de Investigación Desarrollo Tecnológico Extensión y Vinculación de la Facultad de Ingeniería de la Universidad Nacional de Misiones. Los autores deben utilizar esta guía para preparar tanto la versión inicial como la final del artículo. Se recomienda utilizar este documento como una “plantilla” para preparar su manuscrito. Información adicional sobre la preparación del manuscrito así como también sobre las directrices de envío y posterior publicación, pueden obtenerse directamente con el editor principal vía e-mail o ingresando al sitio web en la siguiente dirección: \url{https://autoresjidetev.fio.unam.edu.ar/index.php/jidetev/about/submissions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Estas instrucciones constituyen una guía para la preparación de artículos
+científicos de la revista +Ingenio. Los autores deben utilizarla para escribir
+tanto la versión inicial y como la final del artículo. Se recomienda aplicar
+este documento como una “plantilla” para preparar su manuscrito. La información
+adicional para la preparación del artículo, el envío y posterior publicación,
+pueden obtenerse en este documento, con el editor principal vía e-mail o en el
+sitio web: http://revistas.fio.unam.edu.ar/index.php/ingenio. El Resumen debe
+presentar: el objetivo del trabajo, principales materiales, métodos, resultados
+y conclusiones; además no debe tener más de 200 palabras, ninguna abreviatura,
+referencia, figura ni tabla.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }
 
-\vspace{0.5em}\textit{\textbf{Palabras Clave} -
+\vspace{0.5em}\noindent\textit{\textbf{Palabras Clave} ---
 %%%%%%%%%%%%%%%%%%%%%%%%% P A L A B R A S   C L A V E %%%%%%%%%%%%%%%%%%%%%%%%%%
-Los autores deben proveer palabras claves, siendo el máximo permitido de 10 palabras claves (en orden alfabético, primera letra en mayúscula y separadas por coma) para ayudar a identificar los principales tópicos del artículo
+Hasta 10 palabras en orden alfabético, primera letra en mayúscula y separadas
+por coma.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }\end{abstract}
 
-% \section*{Símbolos} % Opcional
+\vspace{1em}\hrule
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}\vspace{-2em}\singlespacing{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% A B S T R A C T %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+These instructions are presented to assist authors in preparing the manuscript
+for the +INGENIO journal. The authors should use these guidelines for preparing
+both the initial and final versions of their paper. In addition, the authors can
+use this document as a model to prepare your manuscript. Additional information
+about procedures and guidelines for publication can be obtained directly by
+e-mail with the editor in chief, or through the web site
+\url{http://revistas.fio.unam.edu.ar/index.php/ingenio}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+\vspace{0.5em}\noindent\textit{\textbf{Keywords} ---
+%%%%%%%%%%%%%%%%%%%%%%%%% K E Y W O R D S %%%%%%%%%%%%%%%%%%%%%%%%%%
+Up to 10 keywords in alphabetical order, first letter capitalized and separated
+by commas.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}\end{abstract}
+\vspace{1em}\hrule
+
+\section*{\small Símbolos}
+
+\begin{figure}[htbp]
+    \begin{tblr}{
+    colspec={| Q[c,m] X[l,m] | Q[c,m] X[l,m] |},
+    width=\linewidth,
+    hline{1,Z} = {solid},
+}
+$S$ & Potencia aparente (TNR10) & $V_f$ & Volumen final (\si{\litre}) \\
+$V_o$ & Tensión controlada de salida (unidades) & $P_p$ & Presión parcial (\si{atm}) \\
+$V_i$ & Volumen inicial (\si{\litre}) & $T_a$ & Temperatura absoluta (\si{\kelvin}) \\
+$\dots$ & \dotfill & $\dots$ & \dotfill \\
+\end{tblr}
+\end{figure}
 
 \section{Introducción}
 
