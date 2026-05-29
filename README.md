@@ -143,6 +143,6 @@ Para incorporar términos a la sección de Simbología, use el comando `\nomencl
 
 ## 🔗 Enlaces de Interés
 
-*   🌐 **Sitio Web Oficial de +Ingenio:** [revistas.fio.unam.edu.ar/index.php/ingenio](http://revistas.fio.unam.edu.ar/index.php/masingenio)
-*   📥 **Portal de Envíos:** [revistas.fio.unam.edu.ar/index.php/masingenio](https://revistas.fio.unam.edu.ar/index.php/masingenio/en/about/submissions)
+*   🌐 **Sitio Web Oficial de +Ingenio:** [revistas.fio.unam.edu.ar/index.php/masingenio](http://revistas.fio.unam.edu.ar/index.php/masingenio)
+*   📥 **Portal de Envíos:** [revistas.fio.unam.edu.ar/index.php/masingenio/es/about/submissions](https://revistas.fio.unam.edu.ar/index.php/masingenio/es/about/submissions)
 *   🏫 **Facultad de Ingeniería - UNaM:** [fio.unam.edu.ar](https://www.fio.unam.edu.ar)
