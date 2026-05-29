@@ -1,50 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   PLANTILLA DE ARTÍCULO CIENTÍFICO - REVISTA +INGENIO
+%                   Facultad de Ingeniería - UNaM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Este archivo .tex sirve como guía y plantilla de edición. 
+% Se recomienda compilar con pdflatex + biber (para la bibliografía).
+% Todos los estilos requeridos están pre-configurados en este preámbulo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ==============================================================================
+% 1. CLASE DE DOCUMENTO Y DIMENSIONES
+% ==============================================================================
+% \documentclass define el tipo de documento. 'article' es el estándar para artículos.
+% - a4paper: Establece el tamaño de hoja estándar A4.
+% - 12pt: Define el tamaño base de la tipografía.
 \documentclass[a4paper, 12pt]{article}
-\usepackage{graphicx} % Requerido para insertar imágenes
 
-\usepackage{hyperref} % Requerido para insertar enlaces
+% ==============================================================================
+% 2. PAQUETES GRÁFICOS Y DE NAVEGACIÓN
+% ==============================================================================
+% \usepackage{graphicx} permite incluir imágenes en el documento.
+% - Documentación del paquete: https://ctan.org/pkg/graphicx
+\usepackage{graphicx} 
+
+% \usepackage{hyperref} habilita los hipervínculos dinámicos y marcadores PDF.
+\usepackage{hyperref} 
 \hypersetup{
-  colorlinks=true,
-  linkcolor=black,
-  filecolor=magenta,      
-  urlcolor=blue,
+  colorlinks=true,       % Colorea el texto de los enlaces en lugar de poner recuadros.
+  linkcolor=black,       % Color para referencias internas (secciones, figuras, tablas).
+  filecolor=magenta,     % Color para enlaces a archivos locales.
+  urlcolor=blue,         % Color para hipervínculos externos (URLs).
 }
 
-% Idioma español
+% ==============================================================================
+% 3. IDIOMA Y CARACTERES
+% ==============================================================================
+% babel con opción 'spanish' configura la traducción automática de términos (e.g. "Abstract" -> "Resumen")
+% y las reglas de división silábica al español.
 \usepackage[spanish]{babel}
-\usepackage{csquotes}
+\usepackage{csquotes}    % Recomendado para comillas automáticas dependientes del idioma.
 
-% Formato pie de imágenes y tablas
+% ==============================================================================
+% 4. PIES DE IMAGEN Y TABLAS (CAPTIONS)
+% ==============================================================================
+% \usepackage{caption} permite personalizar las leyendas de figuras y tablas.
 \usepackage{caption}
-\captionsetup{justification=centering,
-  labelsep=period,
-  font={bf,footnotesize}}
+\captionsetup{
+  justification=centering, % Centra los pies si ocupan más de una línea.
+  labelsep=period,        % Separa el número de la leyenda con un punto (.) en lugar de dos puntos (:).
+  font={bf,footnotesize}  % Leyenda en negrita (bf) y tamaño reducido (10pt).
+}
 \addto\captionsspanish{
-  \renewcommand{\figurename}{Fig.}
-  \renewcommand{\tablename}{Tabla}
+  \renewcommand{\figurename}{Fig.}   % Abreviatura obligatoria para figuras en la revista.
+  \renewcommand{\tablename}{Tabla}   % Etiqueta obligatoria para tablas.
 }
 
-% Márgenes
+% ==============================================================================
+% 5. GEOMETRÍA Y MÁRGENES DE PÁGINA
+% ==============================================================================
 \usepackage[top=25mm,
 bottom=15mm, 
 left=25mm, 
 right=15mm,
-includefoot]{geometry}
+includefoot]{geometry}   % 'includefoot' asegura que el pie de página quede dentro de los márgenes útiles.
 
-\setlength{\parindent}{5mm} % Sangría de 5 mm
+\setlength{\parindent}{5mm} % Establece la sangría al inicio de cada párrafo (5 mm).
 
-% Interlineado
+% ==============================================================================
+% 6. TIPOGRAFÍA Y FUENTES
+% ==============================================================================
 \usepackage{setspace}
-\setstretch{1.15}
+\setstretch{1.15}        % Establece el interlineado del texto a 1.15.
 
-% Fuente Times New Roman
+% newtxtext y newtxmath cargan la tipografía Times New Roman para texto y matemáticas.
 \usepackage{newtxtext}
 \usepackage{newtxmath}
 
-% Unidades del Sistema Internacional
+% ==============================================================================
+% 7. UNIDADES Y MATEMÁTICAS AVANZADAS
+% ==============================================================================
+% siunitx proporciona una maquetación profesional y consistente de unidades físicas.
+% - Documentación del paquete: https://ctan.org/pkg/siunitx
 \usepackage{siunitx} 
-\sisetup{locale=DE, inter-unit-product=\cdot} % Equiv. notación argentina, con punto para producto de unidades
-\usepackage{nomencl}
-\usepackage{multicol}
+\sisetup{locale=DE, inter-unit-product=\cdot} % Configuración regional (coma decimal) y producto de unidades con punto.
+
+% \usepackage{nomencl} permite generar la lista de símbolos (nomenclatura).
+% - Documentación del paquete: https://ctan.org/pkg/nomencl
+\usepackage{nomencl}     
+\usepackage{multicol}    % Permite trabajar a varias columnas.
 \makenomenclature
 \renewcommand{\nomname}{Símbolos}
 \renewcommand{\nompreamble}{\vspace{-0.8em}\begin{multicols}{2}}
@@ -54,19 +96,25 @@ includefoot]{geometry}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
+% - Configuración del encabezado de página dinámico (visible a partir de la página 2):
+%   Reemplace "Siglas del Nombre y Apellido completo del Primer Autor et al."
+%   con las iniciales de los nombres y el apellido completo del primer autor (ej: "J. P. Pérez et al.").
 \fancyhead[L]{\footnotesize \ifnum\value{page}>1 Siglas del Nombre y Apellido completo del Primer Autor et al. \fi}
 \fancyfoot[C]{\footnotesize \thepage}
 \renewcommand{\headrulewidth}{0pt}
 % \renewcommand{\footrulewidth}{0.4pt}
 \usepackage[bottom]{footmisc}
 
-\usepackage{enumitem} % Modificar los estilos de las listas
+% \usepackage{enumitem} permite modificar los estilos y espaciados de las listas (itemize/enumerate/description).
+% - Documentación del paquete: https://ctan.org/pkg/enumitem
+\usepackage{enumitem} 
 \setenumerate{label=\arabic*), wide=0pt, listparindent=1.25em, parsep=0pt}
 \setlist[description]{font=\bfseries\itshape,leftmargin=0em,labelindent=2em}
 
-\usepackage{tabularray} % Mejores tablas
+% \usepackage{tabularray} proporciona tablas más limpias y potentes que tabular/array de forma automática.
+% - Documentación del paquete: https://ctan.org/pkg/tabularray
+\usepackage{tabularray} 
 \UseTblrLibrary{varwidth}
-% Documentación: http://mirrors.ctan.org/macros/latex/contrib/tabularray/tabularray.pdf
 
 % Formato secciones, subsecciones
 \usepackage{titlesec}
@@ -83,7 +131,8 @@ includefoot]{geometry}
   \textbf{\textit{\abstractname}\\\indent}{}}
 
 
-% Referencias
+% Referencias y Citación
+% - Documentación del paquete biblatex: https://ctan.org/pkg/biblatex
 \usepackage[backend=biber,style=ieee]{biblatex}
 \renewcommand*{\bibfont}{\normalfont\footnotesize}
 \addbibresource{references.bib}
@@ -99,6 +148,11 @@ includefoot]{geometry}
 % Autores
 \author{\normalsize
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% A U T O R E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % - Reemplace los nombres de ejemplo por los autores reales de la investigación.
+  % - Escriba el primer nombre y apellido(s) de forma completa, y las iniciales del segundo nombre (ej: "Juan P. Pérez").
+  % - Utilice el comando \and para separar a cada autor. Esto organizará automáticamente la alineación.
+  % - Coloque superíndices (ej: $^{1}$, $^{2,3}$) para vincular a cada autor con sus afiliaciones.
+  % - Marque el autor para correspondencia con una nota al pie usando \footnote{Autor en correspondencia.} pegado a su superíndice.
   Nombre/s y Apellido/s$^{1}$\footnote{Autor en correspondencia.} \and \normalsize
   Nombre/s y Apellido/s$^{2}$ \and \normalsize
   Nombre/s y Apellido/s$^{3}$ \and \normalsize
@@ -110,6 +164,11 @@ includefoot]{geometry}
 % Afiliaciones, en lugar de fecha
 \date{\footnotesize{\textit{
       %%%%%%%%%%%%%%%%%%%%%%%%%%% A F I L I A C I O N E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      % - Redacte las afiliaciones dentro de \date{\footnotesize{\textit{ ... }}}.
+      % - Cada institución debe comenzar con su superíndice correspondiente (ej: $^{1}$, $^{2}$).
+      % - Indique la afiliación en orden jerárquico: Universidad, Facultad, Departamento o Laboratorio, Ciudad, Provincia, País.
+      % - Utilice la doble barra (\\) al final de cada institución para forzar el salto de línea.
+      % - Al final, incluya la lista de correos electrónicos (e-mails) de todos los autores.
       $^{1}$Universidad Nacional de Misiones (UNaM). Facultad de Ingeniería. Dpto. de
       Ing. Industrial. Laboratorio de Gestión Tecnológica. Misiones, Argentina \\
       $^{2}$Universidad Nacional de Misiones–CONICET. Facultad de Ingeniería.
@@ -122,9 +181,15 @@ includefoot]{geometry}
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
     }}}
 
+% ==============================================================================
+%                      INICIO DEL DOCUMENTO PRINCIPAL
+% ==============================================================================
+% Todo el texto visible debe ir entre \begin{document} y \end{document}.
 \begin{document}
+
+% \maketitle genera de manera automática el título, autores y afiliaciones definidos arriba.
 \maketitle
-\thispagestyle{fancy}
+\thispagestyle{fancy}    % Aplica el estilo de cabecera/pie de página a la primera página.
 
 \vspace{-1em}\hrule
 \begin{abstract}\vspace{-2em}\singlespacing{
@@ -194,8 +259,7 @@ de las ciencias técnicas en general y en particular de las ingenierías: Civil,
 Electromecánica, Electrónica, Industrial, en Computación y Mecatrónica, entre
 otras.
 
-Se aceptarán trabajos en español, portugués e inglés, en el formato editable de
-\textbf{Word (Microsoft Office)}.
+Se aceptarán trabajos en español, portugués e inglés, utilizando esta plantilla de \LaTeX{} o en el formato editable de \textbf{Word (Microsoft Office)}.
 
 Los autores deben presentar su manuscrito electrónicamente y seguir el proceso
 de revisión a través del sitio web de +INGENIO,
@@ -211,13 +275,44 @@ utilizar unidades del Sistema Internacional (SI o MKS). La revista no realizará
 ningún formateo final del artículo. Su documento debe estar “listo para
 publicarse” una vez aceptado.
 
+\subsection{Ventajas de la Maquetación en \LaTeX{}}
+
+La preparación de manuscritos en \LaTeX{} presenta múltiples ventajas frente a los procesadores de texto tradicionales (como \textbf{Word}), especialmente en el ámbito de las publicaciones científicas:
+\begin{description}
+  \item[Generación de hipervínculos:] El paquete \texttt{hyperref} convierte automáticamente todas las citas bibliográficas, referencias a ecuaciones, figuras, tablas y direcciones URL en hipervínculos interactivos clickeables dentro del documento PDF resultante.
+  \item[Gestión de referencias:] La bibliografía se ordena y formatea automáticamente según el estándar IEEE a partir de la base de datos de referencias (\texttt{references.bib}), eliminando la necesidad de numerar y ordenar la lista de forma manual.
+  \item[Consistencia tipográfica:] El autor se enfoca exclusivamente en la redacción del contenido, mientras que la plantilla gestiona de manera uniforme los márgenes, espaciados, fuentes y paginación a nivel global.
+  \item[Calidad matemática:] El motor de composición de ecuaciones de \LaTeX{} es el estándar de la industria científica debido a su precisión gráfica en la renderización de símbolos y estructuras matemáticas complejas.
+  \item[Control de versiones:] Al basarse en archivos de texto plano (\texttt{.tex}), los documentos en \LaTeX{} permiten el empleo eficiente de sistemas de control de versiones (como \textbf{Git}). Esto facilita el seguimiento detallado de cambios, la colaboración simultánea entre autores.
+\end{description}
+
+
+\subsection{Estructura del Proyecto y Archivos Clave}
+
+Para la correcta edición de este manuscrito, se debe comprender la estructura del proyecto y la función de cada uno de sus archivos clave:
+\begin{description}
+  \item[main.tex:] Es el archivo fuente principal en formato \LaTeX{}. Contiene el preámbulo (donde se cargan los paquetes y configuraciones de formato de la revista) y el cuerpo del manuscrito estructurado en secciones. Toda la redacción y maquetación del artículo se realiza dentro de este archivo.
+  \item[main.pdf:] Es el documento compilado final en formato PDF. Actúa como la guía de estilo visual y el manual de usuario de la plantilla. Este es el formato oficial requerido para la presentación definitiva del manuscrito a la revista.
+  \item[references.bib:] Es el archivo de base de datos bibliográfica en formato BibTeX. Aquí se deben registrar todos los recursos y referencias utilizando la estructura normalizada de campos (como autor, título, año, revista, etc.), las cuales serán invocadas en el texto mediante \texttt{\textbackslash cite\{...\}}.
+  \item[images/:] Directorio destinado a almacenar las imágenes y figuras utilizadas en el artículo (en formatos PDF, EPS, PNG o JPG). Se aconseja agrupar todos los recursos gráficos aquí para mantener organizado el espacio de trabajo.
+  \item[Archivos temporales y de compilación:] Durante el proceso de compilación se generan diversos archivos auxiliares y de registro (como \texttt{.aux}, \texttt{.log}, \texttt{.toc}, \texttt{.bbl}, entre otros). Estos archivos son dinámicos, de uso interno del compilador, y se encuentran excluidos del repositorio de la plantilla definitiva a través del archivo \texttt{.gitignore}. Por lo tanto, no forman parte de la estructura de archivos que los autores deben distribuir o editar de forma manual.
+\end{description}
+
 \subsection{Editando el Texto Principal}
 
 El manuscrito debe prepararse en formato de página A4 (\qty{297}{\milli\meter} x
-\qty{210}{\milli\meter}), como el ejemplo dado por esta plantilla. No modifique
-los márgenes de este ejemplo. Si está creando el documento usted mismo, tenga en
-cuenta los márgenes enumerados en la Tabla~\ref{tb:margenes}.
+\qty{210}{\milli\meter}), de acuerdo con el diseño preestablecido en esta plantilla. Se debe
+evitar la modificación manual de los márgenes. En caso de requerir la configuración independiente
+del documento, se deben contemplar los márgenes especificados en la Tabla~\ref{tb:margenes}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% T A B L A S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para crear tablas, use el entorno 'table' y dentro de él 'tblr'.
+% - \caption{...} define el título de la tabla (se coloca ARRIBA).
+% - \label{tb:clave} establece la clave para referenciarla en el texto con \ref{tb:clave}.
+% - El formato de líneas (hline) y columnas (colspec) se configura en las opciones de 'tblr'.
+% - Para más información de la sintaxis 'tblr', consulte la documentación oficial en:
+%   https://ctan.org/pkg/tabularray
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[htbp]
   \centering\footnotesize
   \caption{Márgenes de página} \label{tb:margenes} % Título por encima de tablas
@@ -234,13 +329,9 @@ cuenta los márgenes enumerados en la Tabla~\ref{tb:margenes}.
 \end{table}
 
 \begin{enumerate}
-\item La sangría es de 0,5 cm al inicio de cada párrafo (solo en primera línea).
-\item Tamaños y estilos de fuente: Los tamaños de fuente especificados en estas
-  directrices están de acuerdo con el procesador de textos \textbf{Word de
-    Microsoft Office} y el tipo de letra debe ser TNR.
-\item La Tabla \ref{tb:fuentes} muestra los tamaños estándar de los caracteres
-  que se deben usar en las diferentes secciones del manuscrito. A su vez es un
-  modelo para la construcción de tablas del artículo.
+\item La sangría y los márgenes se configuran de manera automática en el preámbulo de la plantilla. No es necesario agregar espacios o tabulaciones manuales al inicio de los párrafos.
+\item Tamaños y estilos de fuente: A diferencia de los procesadores de texto visuales, en \LaTeX{} los estilos y tamaños de letra son aplicados de forma global por la plantilla al utilizar comandos de estructura (como \texttt{\textbackslash section}, \texttt{\textbackslash subsection}, etc.). El tipo de letra predeterminado es Times New Roman.
+\item La Tabla \ref{tb:fuentes} muestra los tamaños estándar configurados internamente para cada sección del manuscrito, y sirve a su vez como un ejemplo para la construcción de tablas en el artículo.
 \end{enumerate}
 
 \begin{table}[htbp]
@@ -393,20 +484,14 @@ continuar con el tema desarrollado.
 
 \subsection{Referencias}
 
-La sección de referencias, no se enumera. 
+En esta plantilla, la gestión de las referencias bibliográficas está completamente automatizada según el estilo estándar IEEE mediante el paquete \texttt{biblatex} (para más detalles, consulte la documentación del paquete en \url{https://ctan.org/pkg/biblatex}). Esto elimina la necesidad de ordenar las citas y formatear la lista de referencias de forma manual.
 
-La citación de referencias [1], [2], etc. a lo largo del texto, debe aparecer
-entre corchetes, TNR12 y estilo normal. Las citas bibliográficas deberán
-consignarse con números correlativos colocados entre corchetes, de tamaño 10 y
-estilo normal. Las referencias serán incorporadas en la lista de referencias
-bibliográficas en el orden en el cual aparecen en el texto. El texto puede
-incluir nombres de autores, pero siempre deberá figurar el número de referencia
-bibliográfica correspondiente.
-
-Se recomienda utilizar el formato IEEE para incorporar los estilos de las
-referencias bibliografías de artículos de revistas y conferencias, de libros y
-de notas técnicas. Los ejemplos se presentan en la sección de referencias. Al
-final de estas directrices, se incluye un ejemplo de cómo deben insertarse.
+Para incluir y citar referencias en su artículo, siga estas pautas:
+\begin{description}
+  \item[Base de datos de referencias:] Añada todos los recursos bibliográficos en formato BibTeX dentro del archivo \texttt{references.bib}.
+  \item[Citas en el texto:] Para realizar una cita en el manuscrito, utilice el comando \texttt{\textbackslash cite\{clave\_de\_la\_cita\}} (por ejemplo, \texttt{\textbackslash cite\{nombre\_autor\_anio\}}). El motor de compilación numerará y formateará automáticamente la cita entre corchetes, por ejemplo, [1].
+  \item[Generación de la lista:] La lista final de referencias se imprime automáticamente al final del documento mediante el comando \texttt{\textbackslash printbibliography}, ordenándose en el orden de aparición del texto según el estilo IEEE. No se incluirán en la lista las referencias que no hayan sido citadas en el documento.
+\end{description}
 
 \subsection{Simbología, Apéndice y Agradecimientos}
 
@@ -427,12 +512,27 @@ Los autores tendrán en cuenta rigurosamente los márgenes establecidos. En caso
 
 Es muy importante respetar estos márgenes, ya que son necesarios para desarrollar la edición final.
 
-\subsection{Figuras y Creación del PDF}
+\subsection{Figuras y Tablas}
 
-Todas las figuras deben estar incrustadas en el documento. Cuando se incluya una imagen, debe asegurarse de insertar la imagen real en lugar de un enlace a su computadora local.
+En \LaTeX{}, las figuras y las tablas se tratan como elementos "flotantes". Su posición final en el documento es determinada automáticamente por el compilador para optimizar el espacio, utilizando especificadores de posición como \texttt{[htbp]} (aquí, arriba, abajo, o en una página de flotantes).
 
-En la medida de lo posible las figuras y las tablas deben insertarse en el texto justo después de que se mencionen por primera vez; si esto no fuera posible, deben ubicarse lo más próximas posibles a dicha mención. La resolución de las figuras debe ser de al menos 300 ppp y preferentemente deben utilizarse archivos vectoriales para una mejor calidad de impresión (EMF o EPS).
+Para la inserción y referencia de estos elementos de forma correcta, se deben seguir las siguientes directrices:
+\begin{description}
+  \item[Referencias cruzadas:] Se debe evitar el uso de expresiones de ubicación física (como “la tabla de abajo” o “la figura de la página siguiente”). En su lugar, se asocian etiquetas únicas mediante el comando \texttt{\textbackslash label\{clave\}} y se hace referencia a ellas de forma dinámica con \texttt{\textbackslash ref\{clave\}} (por ejemplo, la Fig.~\ref{fig:fig1} o la Tabla~\ref{tb:fuentes}).
+  \item[Títulos y Leyendas:] Los títulos de las tablas deben situarse por encima del elemento, mientras que los de las figuras se colocan por debajo. El formato de las leyendas (estilo negrita, tamaño de fuente de 10pt y alineación centrada) es aplicado de forma automática, por lo que únicamente se requiere el uso del comando \texttt{\textbackslash caption\{...\}} sin adición de formatos manuales.
+  \item[Tablas profesionales:] En esta plantilla, las tablas se construyen preferentemente mediante el entorno \texttt{tblr} del paquete \texttt{tabularray} (la guía de uso detallada se encuentra en \url{https://ctan.org/pkg/tabularray}). Esto permite obtener un espaciado homogéneo de forma automática sin recurrir a ajustes manuales.
+  \item[Imágenes:] Para la inserción de imágenes, se utiliza el entorno \texttt{figure} junto con el comando \texttt{\textbackslash includegraphics[width=...]}. Se debe asegurar el empleo de imágenes de alta calidad (mínimo 300 ppp) y preferentemente vectoriales (PDF, EPS).
+\end{description}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% F I G U R A S %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para insertar una figura, use el entorno 'figure'.
+% - \centering centra la imagen en la página.
+% - \includegraphics[width=...]{ruta} carga el archivo de imagen.
+% - \caption{...} define el título de la figura (se coloca ABAJO).
+% - \label{fig:clave} establece la clave para referenciarla en el texto con \ref{fig:clave}.
+% - Para más detalles de la inclusión y manejo de gráficos, consulte:
+%   https://ctan.org/pkg/graphicx
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.65\linewidth]{images/figura1.pdf}
@@ -440,20 +540,17 @@ En la medida de lo posible las figuras y las tablas deben insertarse en el texto
     \label{fig:fig1}
 \end{figure}
 
-Los títulos de las tablas deben estar por encima de las tablas y los títulos de las figuras deben estar por debajo de las figuras. 
-Las tablas deben tener título, designadas por la palabra Tabla y numeradas en secuencia por números arábigos. Los títulos de las tablas deben estar centrados y en negrita, como se muestra en la Tabla \ref{tb:fuentes} (ver pág. \pageref{tb:fuentes}).
+\subsection{Unidades y Notación Científica}
 
-Las figuras también necesitan títulos y están designados por la abreviatura \textbf{Fig.}, y numerados con números arábigos en secuencia. El título de la figura debe estar \textbf{centrado y en negrita}, como se muestra en el ejemplo de la \textbf{Fig. \ref{fig:fig1}}. Los títulos de las figuras se designan también con \textbf{Fig. x} en el texto. La designación de las partes de una figura se realiza añadiendo letras minúsculas a los números de las figuras comenzando con la letra a, por ejemplo, \textbf{Fig. 1}~(a).
+Para asegurar la coherencia tipográfica de las unidades en el documento, se utiliza el paquete \texttt{siunitx} (cuya documentación está disponible en \url{https://ctan.org/pkg/siunitx}). Esto evita espaciados incorrectos o saltos de línea huérfanos entre un número y su unidad:
+\begin{description}
+  \item[Unidades aisladas:] Se definen mediante el comando \texttt{\textbackslash unit\{...\}}. Por ejemplo, la denominación “Magnetización (\unit{A/m})” o “Magnetización (\unit{A.m^{-1}})”.
+  \item[Cantidades:] Para asociar un valor numérico a su unidad, se emplea el comando \texttt{\textbackslash qty\{valor\}\{unidad\}}, como por ejemplo \qty{15000}{A/m} o \qty{0,015}{A/m}.
+  \item[Multiplicadores:] Se recomienda el uso de prefijos del SI (como \unit{kA/m}) o potencias mediante la sintaxis \texttt{\textbackslash qty\{e3\}\{A/m\}}. Se debe evitar el empleo de la notación informal “$\times$ 1000”.
+\end{description}
+El punto intermedio ($\cdot$) para productos de unidades en expresiones como \unit{A.m^{-1}} es generado de forma automática a través de la configuración global de la plantilla.
 
-Pueden colocarse dos figuras contiguas, una al lado de la otra, introduciendo una tabla de dos columnas y una fila, sin bordes y con autoajuste a la ventana (márgenes). Las figuras se insertan una en cada celda de esta tabla. Esta disposición sirve, por ejemplo, para comparar dos resultados diferentes.
-
-Para entender mejor las gráficas, la definición de sus ejes se debe hacer con palabras y no con letras, excepto cuando se refiere a formas de onda. Las unidades deben estar entre paréntesis. Por ejemplo, utilice la denominación “Magnetización (\unit{A/m})” o “Magnetización (\unit{A.m^{-1}})”, en lugar de “M (\unit{A.m^{-1}})”. 
-
-Los multiplicadores pueden ser una fuente de confusión. Escribir “Magnetización (\unit{kA/m})” o “Magnetización (\qty{e3}{A/m})”. No escriba “Magnetización (\unit{A/m}) \(\times\) 1000”, porque el lector no sabría si la etiqueta del eje superior de la Fig. 1 es \qty{15000}{A/m} o \qty{0,015}{A/m}.
-
-Las figuras deben, preferentemente, realizarse con trazos negros y con fondo blanco, ya que la versión impresa por lo general es en blanco y negro. Además, cuando existan diferentes tipos de líneas en el mismo gráfico, deben utilizarse diferentes estilos de línea. 
-
-Para mejorar los gráficos, utilice un tipo de letra legible con un tamaño adecuado, como se muestra en la Fig. \ref{fig:fig2}; aproximadamente de 10 a 12 puntos para los números de los ejes y de 12 a 14 puntos para las etiquetas de los ejes.
+Las figuras deben realizarse, de forma preferente, con trazos negros y fondo blanco, dado que la versión impresa suele publicarse en escala de grises. Con el propósito de mejorar la legibilidad de los gráficos, se deben emplear tamaños de letra adecuados en los ejes (entre 10 y 14 puntos), tal como se ilustra en la Fig. \ref{fig:fig2}.
 
 \begin{figure}[h!]
   \centering
@@ -464,19 +561,25 @@ Para mejorar los gráficos, utilice un tipo de letra legible con un tamaño adec
 
 \subsection{Abreviaciones y Acrónimos}
 
-Deben definir las abreviaturas y los acrónimos la primera vez que se utilizan en el texto, incluso después de que ya se hayan definido en el resumen, por ejemplo “...Modulación de ancho de pulso (PWM)...” o “Fuentes de alimentación ininterrumpida (UPS)”. No es necesario definir las abreviaturas como IEEE, SI, CA y CC. Las abreviaturas que incorporan puntos no deben tener espacios: tipo “C.N.R.S.” y no “C. N. R. S.”. 
+Se deben definir las abreviaturas y los acrónimos la primera vez que son introducidos en el texto, incluso si ya han sido especificados en el resumen, como por ejemplo “...Modulación de ancho de pulso (PWM)...” o “Fuentes de alimentación ininterrumpida (UPS)”. No se requiere definir siglas de uso universal como IEEE, SI, CA y CC. Las abreviaturas que incorporan puntos se escriben sin espacios intermedios (por ejemplo, “C.N.R.S.” y no “C. N. R. S.”).
 
-No utilice abreviaturas en el título a menos que sea inevitable.
-
-\section{Consejos Útiles}
+Se debe evitar el uso de abreviaturas en el título, a menos que resulte estrictamente necesario.
 
 \subsection{Ecuaciones}
 
-Utilice una tabla de dos columnas y una fila, sin bordes, como se muestra en \eqref{eq:1}. Numere las ecuaciones consecutivamente con números arábigos entre paréntesis, justificadas al margen derecho; como en \eqref{eq:1}. 
+En \LaTeX{}, las ecuaciones se escriben utilizando el entorno \texttt{equation}. A diferencia de otros procesadores de texto, no es necesario crear tablas para alinear las ecuaciones ni escribir los números de forma manual. El sistema centra automáticamente la ecuación y coloca el número correlativo correspondiente alineado al margen derecho, como se observa en \eqref{eq:1}.
 
-En la primera columna va la ecuación centrada en la celda y, en la segunda columna, se escribe el número de la ecuación entre paréntesis, centrado en la celda y justificado al margen derecho. 
-Coloque los signos de puntuación en las ecuaciones cuando formen parte de una oración, como en 
+Para estructurar ecuaciones más complejas (por ejemplo, con múltiples líneas o partes contiguas), se pueden utilizar sub-entornos como \texttt{split} (para más detalles de la escritura matemática, consulte el manual de \texttt{amsmath} en \url{https://ctan.org/pkg/amsmath}):
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% E C U A C I O N E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Las ecuaciones se escriben utilizando el entorno 'equation'.
+% - \LaTeX{} numera automáticamente las ecuaciones de forma secuencial.
+% - \label{eq:clave} define la clave de referencia.
+% - En el texto, refiérase a ellas usando \eqref{eq:clave} para que aparezcan entre paréntesis.
+% - Use 'split' para ecuaciones largas que requieran dividirse en múltiples líneas.
+% - Para más información de entornos matemáticos complejos, consulte:
+%   https://ctan.org/pkg/amsmath
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{equation} \label{eq:1}
   \begin{split}
     \int^{r_2}_0 F(r, \varphi)\ dr\ d\varphi = \left[\sigma r_2 / (2\mu_0)\right]
@@ -487,35 +590,28 @@ Coloque los signos de puntuación en las ecuaciones cuando formen parte de una o
   \end{split}
 \end{equation}
 
-Se recomienda utilizar la tabla de las ecuaciones \eqref{eq:1} y \eqref{eq:2} la
-cual ya está formateada para la presente plantilla.
+Para ecuaciones simples de una sola línea, la sintaxis es directa:
 
 \begin{equation} \label{eq:2}
   u_c(t) = K_p \left[e_v(t)+\tau_d\frac{de_v(t)}{dt}\right]
 \end{equation}
-donde: $u_c$ es la acción de control; $K_p$ es la ganancia proporcional; $e_v$
-es la señal de error de tensión y $\tau_d$ es la constante de tiempo derivativa.
+donde: $u_c$ es la acción de control; $K_p$ es la ganancia proporcional; $e_v$ es la señal de error de tensión y $\tau_d$ es la constante de tiempo derivativa.
 
-Utilice paréntesis para evitar ambigüedades en los denominadores. Asegúrese de
-que los símbolos de su ecuación hayan sido definidos antes de que aparezca la
-ecuación o inmediatamente después. Escribir en cursiva los símbolos de unidades
-o constantes (T podría referirse a la temperatura, pero T también es la unidad
-tesla). Las variables instantáneas deben escribirse en cursiva y en minúsculas.
-Las constantes deben estar escritas en cursiva y en mayúsculas. Las matrices y
-vectores deben estar escritos en negrita. Recomendamos a los autores que
-utilicen los estándares de la IEEE para la nomenclatura de variables.
-
-Cuando hace referencia a una ecuación refiérase a “\eqref{eq:1}”, y no “Ec.
-\eqref{eq:1}” o “ecuación \eqref{eq:1}”, excepto al comienzo de la oración: “La
-ecuación \eqref{eq:1} es...”
+Para la escritura matemática en el manuscrito, se deben considerar las siguientes recomendaciones:
+\begin{description}
+  \item[Signos de puntuación:] Las ecuaciones que forman parte de una oración deben finalizar con el signo de puntuación correspondiente (coma o punto), tal como se muestra en \eqref{eq:1}.
+  \item[Variables y Constantes:] Por defecto, el modo matemático presenta las variables en cursiva, lo cual es adecuado para parámetros físicos (por ejemplo, $t$ o $T$). Las constantes matemáticas y unidades físicas se deben escribir en letra redonda (por ejemplo, la unidad de inducción magnética se escribe $\mathrm{T}$ o utilizando el comando \texttt{\textbackslash unit\{\dots\}}).
+  \item[Vectores y Matrices:] Se recomienda representarlos con tipografía en negrita empleando comandos como \texttt{\textbackslash mathbf\{\dots\}}.
+  \item[Referencias a ecuaciones:] Se debe emplear siempre el comando \texttt{\textbackslash eqref\{clave\}} en lugar de transcribir la numeración manualmente. Esto genera automáticamente los paréntesis y el enlace de hipertexto (por ejemplo, “el resultado de \eqref{eq:1}”). Asimismo, se aconseja evitar términos como “Ec. \eqref{eq:1}” o “ecuación \eqref{eq:1}”, a menos que se sitúen al inicio de una oración (por ejemplo, “La ecuación \eqref{eq:1} representa\dots”).
+\end{description}
 
 \subsection{Otras Recomendaciones}
 
-Utilice un espacio después del punto seguido y de los dos puntos. Evite el uso
-de participios, como “Usando (1), se calculó el potencial”. [No está claro quién
-o qué utilizó (1)]. En su lugar, escriba “El potencial se calculó usando (1)” o
-“Usando (1) se calculó el potencial”.
-Al final de una oración, no use guiones ni agregue espacios para ajustar la oración.
+\begin{description}
+  \item[Espaciado:] Se debe emplear un único espacio después de los signos de puntuación. El motor de compilación de \LaTeX{} ajusta el espaciado entre palabras de manera óptima.
+  \item[Redacción técnica:] Se debe evitar el uso de gerundios o participios de forma incorrecta para la descripción de metodologías (por ejemplo, “Usando \eqref{eq:1}, se calculó el potencial”, donde no se identifica el sujeto de la acción). En su lugar, se recomiendan estructuras como: “El potencial se calculó mediante \eqref{eq:1}” o “A través de \eqref{eq:1} se obtuvo el potencial”.
+  \item[Justificación automática:] En \LaTeX{} la justificación tipográfica, la separación silábica y la distribución del texto son procesadas automáticamente por el motor TeX. Se debe evitar la inserción forzada de saltos de línea con \texttt{\textbackslash\textbackslash} dentro del párrafo, así como la adición de guiones o espacios manuales con fines de alineación.
+\end{description}
 
 \section*{Agradecimientos} % Opcional
 
