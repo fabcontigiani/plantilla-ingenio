@@ -6,6 +6,7 @@ El objetivo de esta plantilla es facilitar a los autores el cumplimiento de los 
 
 ---
 
+
 ## 🚀 Características Clave
 
 La plantilla viene pre-configurada con las siguientes especificaciones y paquetes recomendados:
@@ -50,6 +51,25 @@ Para compilar este proyecto de forma local, necesitará instalar una distribuci�
     ```
 *   **En Windows:** Se recomienda instalar **[MiKTeX](https://miktex.org/)** o **[TeX Live](https://www.tug.org/texlive/)** y asegurarse de instalar el motor `biber` desde la consola de paquetes.
 *   **En macOS:** Se recomienda instalar **[MacTeX](https://www.tug.org/mactex/)**.
+
+---
+
+## ⚙️ Cómo Comenzar (Uso como Plantilla)
+
+Dado que este repositorio está configurado en GitHub como una **plantilla (template)**, no es necesario clonarlo y borrar el historial de Git manualmente. Puede comenzar de las siguientes maneras:
+
+1. **Desde GitHub (Recomendado):**
+   * Inicie sesión en su cuenta de GitHub.
+   * Haga clic en el botón verde **"Use this template" (Usar esta plantilla)** en la parte superior.
+   * Seleccione **"Create a new repository" (Crear un nuevo repositorio)**.
+   * Elija un nombre y créelo. Tendrá una copia limpia en su cuenta sin el historial de commits original.
+2. **Descarga Directa:**
+   * Descargue el código en `.zip` mediante **Code > Download ZIP**, extráigalo y trabaje localmente.
+3. **Clonación Tradicional:**
+   * Clone el repositorio de forma estándar usando su terminal:
+     ```bash
+     git clone <url-del-repositorio>
+     ```
 
 ---
 
