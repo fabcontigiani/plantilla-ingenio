@@ -3,10 +3,10 @@
 
 \usepackage{hyperref} % Requerido para insertar enlaces
 \hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    filecolor=magenta,      
-    urlcolor=blue,
+  colorlinks=true,
+  linkcolor=black,
+  filecolor=magenta,      
+  urlcolor=blue,
 }
 
 % Idioma español
@@ -16,8 +16,8 @@
 % Formato pie de imágenes y tablas
 \usepackage{caption}
 \captionsetup{justification=centering,
-              labelsep=period,
-              font={bf,footnotesize}}
+  labelsep=period,
+  font={bf,footnotesize}}
 \addto\captionsspanish{
   \renewcommand{\figurename}{Fig.}
   \renewcommand{\tablename}{Tabla}
@@ -25,11 +25,11 @@
 
 % Márgenes
 \usepackage[top=25mm,
-            bottom=15mm, 
-            left=25mm, 
-            right=15mm,
-            includefoot]{geometry}
-            
+bottom=15mm, 
+left=25mm, 
+right=15mm,
+includefoot]{geometry}
+
 \setlength{\parindent}{5mm} % Sangría de 5 mm
 
 % Interlineado
@@ -42,7 +42,13 @@
 
 % Unidades del Sistema Internacional
 \usepackage{siunitx} 
-\usepackage[locale=DE]{siunitx} % Equiv. notación argentina
+\sisetup{locale=DE, inter-unit-product=\cdot} % Equiv. notación argentina, con punto para producto de unidades
+\usepackage{nomencl}
+\usepackage{multicol}
+\makenomenclature
+\renewcommand{\nomname}{Símbolos}
+\renewcommand{\nompreamble}{\vspace{-0.8em}\begin{multicols}{2}}
+  \renewcommand{\nompostamble}{\end{multicols}}
 
 % Pie de página y notas al pie
 \usepackage{fancyhdr}
@@ -55,24 +61,26 @@
 \usepackage[bottom]{footmisc}
 
 \usepackage{enumitem} % Modificar los estilos de las listas
-\setenumerate{wide=0pt, listparindent=1.25em, parsep=0pt}
+\setenumerate{label=\arabic*), wide=0pt, listparindent=1.25em, parsep=0pt}
+\setlist[description]{font=\bfseries\itshape,leftmargin=0em,labelindent=2em}
 
 \usepackage{tabularray} % Mejores tablas
+\UseTblrLibrary{varwidth}
 % Documentación: http://mirrors.ctan.org/macros/latex/contrib/tabularray/tabularray.pdf
 
 % Formato secciones, subsecciones
 \usepackage{titlesec}
 \titleformat{\section}
-  {\normalfont\normalsize\bfseries}{\thesection.}{1em}{}
+{\normalfont\normalsize\bfseries}{\thesection.}{1em}{}
 \titleformat{\subsection}
-  {\normalfont\normalsize\itshape}{\thesubsection.}{1em}{}
+{\normalfont\normalsize\itshape}{\thesubsection.}{1em}{}
 \titleformat{\subsubsection}
-  {\normalfont\normalsize\itshape}{\thesubsubsection.}{1em}{}
+{\normalfont\normalsize\itshape}{\thesubsubsection.}{1em}{}
 
 % Formato resumen
 \renewenvironment{abstract}{%
-    \vspace{1em}\footnotesize\noindent
-    \textbf{\textit{\abstractname}\\\indent}{}}
+  \vspace{1em}\footnotesize\noindent
+  \textbf{\textit{\abstractname}\\\indent}{}}
 
 
 % Referencias
@@ -82,37 +90,37 @@
 
 % Banner + título
 \title{\vspace{-4em}\includegraphics[height=2cm]{images/logo_fio.png}\hspace{3cm}\includegraphics[height=2cm]{images/logo_ingenio.png}\\\vspace{1em}
-\large\textbf{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% T Í T U L O %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Título del Artículo
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-}}
+  \large\textbf{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% T Í T U L O %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Título del Artículo
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  }}
 
 % Autores
 \author{\normalsize
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% A U T O R E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Nombre/s y Apellido/s$^{1}$\footnote{Autor en correspondencia.} \and \normalsize
-Nombre/s y Apellido/s$^{2}$ \and \normalsize
-Nombre/s y Apellido/s$^{3}$ \and \normalsize
-Nombre/s y Apellido/s$^{3,4}$ \and \normalsize
-Nombre/s y Apellido/s$^{3,5}$
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% A U T O R E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  Nombre/s y Apellido/s$^{1}$\footnote{Autor en correspondencia.} \and \normalsize
+  Nombre/s y Apellido/s$^{2}$ \and \normalsize
+  Nombre/s y Apellido/s$^{3}$ \and \normalsize
+  Nombre/s y Apellido/s$^{3,4}$ \and \normalsize
+  Nombre/s y Apellido/s$^{3,5}$
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 }
 
 % Afiliaciones, en lugar de fecha
 \date{\footnotesize{\textit{
-%%%%%%%%%%%%%%%%%%%%%%%%%%% A F I L I A C I O N E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-$^{1}$Universidad Nacional de Misiones (UNaM). Facultad de Ingeniería. Dpto. de
-Ing. Industrial. Laboratorio de Gestión Tecnológica. Misiones, Argentina \\
-$^{2}$Universidad Nacional de Misiones–CONICET. Facultad de Ingeniería.
-Instituto de Materiales de Misiones (IMAM) Grupo de Investigación y Desarrollo
-en Electrónica (GIDE). Oberá, Misiones, Argentina \\ 
-$^{3}$Universidad Amazónica del Ecuador (UAE). Facultad de Ingeniería. Dpto. de
-Industrias. Ecuador \\
-e-mails: emailauthor1$^{1}$, emailauthor2$^{2}$, emailauthor3$^{3}$,
-emailauthor4$^{4}$, emailauthor5$^{5}$
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
-}}}
+      %%%%%%%%%%%%%%%%%%%%%%%%%%% A F I L I A C I O N E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      $^{1}$Universidad Nacional de Misiones (UNaM). Facultad de Ingeniería. Dpto. de
+      Ing. Industrial. Laboratorio de Gestión Tecnológica. Misiones, Argentina \\
+      $^{2}$Universidad Nacional de Misiones–CONICET. Facultad de Ingeniería.
+      Instituto de Materiales de Misiones (IMAM) Grupo de Investigación y Desarrollo
+      en Electrónica (GIDE). Oberá, Misiones, Argentina \\ 
+      $^{3}$Universidad Amazónica del Ecuador (UAE). Facultad de Ingeniería. Dpto. de
+      Industrias. Ecuador \\
+      e-mails: emailauthor1$^{1}$, emailauthor2$^{2}$, emailauthor3$^{3}$,
+      emailauthor4$^{4}$, emailauthor5$^{5}$
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    }}}
 
 \begin{document}
 \maketitle
@@ -120,276 +128,400 @@ emailauthor4$^{4}$, emailauthor5$^{5}$
 
 \vspace{-1em}\hrule
 \begin{abstract}\vspace{-2em}\singlespacing{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% R E S U M E N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Estas instrucciones constituyen una guía para la preparación de artículos
-científicos de la revista +Ingenio. Los autores deben utilizarla para escribir
-tanto la versión inicial y como la final del artículo. Se recomienda aplicar
-este documento como una “plantilla” para preparar su manuscrito. La información
-adicional para la preparación del artículo, el envío y posterior publicación,
-pueden obtenerse en este documento, con el editor principal vía e-mail o en el
-sitio web: http://revistas.fio.unam.edu.ar/index.php/ingenio. El Resumen debe
-presentar: el objetivo del trabajo, principales materiales, métodos, resultados
-y conclusiones; además no debe tener más de 200 palabras, ninguna abreviatura,
-referencia, figura ni tabla.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% R E S U M E N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Estas instrucciones constituyen una guía para la preparación de artículos
+    científicos de la revista +Ingenio. Los autores deben utilizarla para escribir
+    tanto la versión inicial y como la final del artículo. Se recomienda aplicar
+    este documento como una “plantilla” para preparar su manuscrito. La información
+    adicional para la preparación del artículo, el envío y posterior publicación,
+    pueden obtenerse en este documento, con el editor principal vía e-mail o en el
+    sitio web: http://revistas.fio.unam.edu.ar/index.php/ingenio. El Resumen debe
+    presentar: el objetivo del trabajo, principales materiales, métodos, resultados
+    y conclusiones; además no debe tener más de 200 palabras, ninguna abreviatura,
+    referencia, figura ni tabla.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  }
 
-\vspace{0.5em}\noindent\textit{\textbf{Palabras Clave} ---
-%%%%%%%%%%%%%%%%%%%%%%%%% P A L A B R A S   C L A V E %%%%%%%%%%%%%%%%%%%%%%%%%%
-Hasta 10 palabras en orden alfabético, primera letra en mayúscula y separadas
-por coma.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-}\end{abstract}
+  \vspace{0.5em}\noindent\textit{\textbf{Palabras Clave} ---
+    %%%%%%%%%%%%%%%%%%%%%%%%% P A L A B R A S   C L A V E %%%%%%%%%%%%%%%%%%%%%%%%%%
+    Hasta 10 palabras en orden alfabético, primera letra en mayúscula y separadas
+    por coma.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  }\end{abstract}
 
 \vspace{1em}\hrule
 \renewcommand{\abstractname}{Abstract}
 \begin{abstract}\vspace{-2em}\singlespacing{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% A B S T R A C T %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-These instructions are presented to assist authors in preparing the manuscript
-for the +INGENIO journal. The authors should use these guidelines for preparing
-both the initial and final versions of their paper. In addition, the authors can
-use this document as a model to prepare your manuscript. Additional information
-about procedures and guidelines for publication can be obtained directly by
-e-mail with the editor in chief, or through the web site
-\url{http://revistas.fio.unam.edu.ar/index.php/ingenio}.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% A B S T R A C T %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    These instructions are presented to assist authors in preparing the manuscript
+    for the +INGENIO journal. The authors should use these guidelines for preparing
+    both the initial and final versions of their paper. In addition, the authors can
+    use this document as a model to prepare your manuscript. Additional information
+    about procedures and guidelines for publication can be obtained directly by
+    e-mail with the editor in chief, or through the web site
+    \url{http://revistas.fio.unam.edu.ar/index.php/ingenio}.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  }
 
-\vspace{0.5em}\noindent\textit{\textbf{Keywords} ---
-%%%%%%%%%%%%%%%%%%%%%%%%% K E Y W O R D S %%%%%%%%%%%%%%%%%%%%%%%%%%
-Up to 10 keywords in alphabetical order, first letter capitalized and separated
-by commas.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-}\end{abstract}
+  \vspace{0.5em}\noindent\textit{\textbf{Keywords} ---
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% K E Y W O R D S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Up to 10 keywords in alphabetical order, first letter capitalized and separated
+    by commas.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  }\end{abstract}
 \vspace{1em}\hrule
 
-\section*{\small Símbolos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% S Í M B O L O S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para agregar nuevos símbolos a la tabla, use la sintaxis: \nomenclature{<símbolo>}{<descripción>}
+% Ejemplo: \nomenclature{$F$}{Fuerza (\si{\newton})}
+\nomenclature{$S$}{Potencia aparente (TNR10)}
+\nomenclature{$V_o$}{Tensión controlada de salida (unidades)}
+\nomenclature{$V_i$}{Volumen inicial (\si{\litre})}
+\nomenclature{$V_f$}{Volumen final (\si{\litre})}
+\nomenclature{$P_p$}{Presión parcial (\si{atm})}
+\nomenclature{$T_a$}{Temperatura absoluta (\si{\kelvin})}
+\vspace{-0.8em}
+\printnomenclature
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\begin{figure}[htbp]
-    \begin{tblr}{
-    colspec={| Q[c,m] X[l,m] | Q[c,m] X[l,m] |},
-    width=\linewidth,
-    hline{1,Z} = {solid},
-}
-$S$ & Potencia aparente (TNR10) & $V_f$ & Volumen final (\si{\litre}) \\
-$V_o$ & Tensión controlada de salida (unidades) & $P_p$ & Presión parcial (\si{atm}) \\
-$V_i$ & Volumen inicial (\si{\litre}) & $T_a$ & Temperatura absoluta (\si{\kelvin}) \\
-$\dots$ & \dotfill & $\dots$ & \dotfill \\
-\end{tblr}
-\end{figure}
+\section{Formato del artículo}
 
-\section{Introducción}
+La revista +INGENIO (Revista de Ciencia, Tecnología e Innovación de la Facultad
+de Ingeniería, Universidad Nacional de Misiones), es un medio a través del cual
+los investigadores pueden publicar sus trabajos científicos siguiendo el formato
+aquí presentado. Los artículos científicos abarcan temas de interés, en el campo
+de las ciencias técnicas en general y en particular de las ingenierías: Civil,
+Electromecánica, Electrónica, Industrial, en Computación y Mecatrónica, entre
+otras.
 
-Las Jornadas de Investigación Desarrollo Tecnológico Extensión y Vinculación de la Facultad de Ingeniería de la Universidad Nacional de Misiones JIDeTEV son un medio a través del cual los docentes investigadores pueden presentar y discutir sus actividades científicas, académicas y técnicas. Se aceptarán trabajos en español, portugués e inglés.  
+Se aceptarán trabajos en español, portugués e inglés, en el formato editable de
+\textbf{Word (Microsoft Office)}.
 
-Los autores deben presentar su manuscrito electrónicamente y seguir el proceso de revisión a través del sitio web \url{http://conferencias.fio.unam.edu.ar/index.php/JIDeTEV/}. Desde esta página, se puede obtener acceso a toda la información necesaria para la presentación del manuscrito. Cabe señalar que los manuscritos deben presentarse en documentos editables en formatos DOC o PDF. 
+Los autores deben presentar su manuscrito electrónicamente y seguir el proceso
+de revisión a través del sitio web de +INGENIO,
+\url{https://revistas.fio.unam.edu.ar/index.php/masingenio/index}. Desde esta
+página, se puede obtener acceso a toda la información necesaria para la
+presentación del manuscrito.
 
-El objetivo principal de la sección Introducción es presentar la naturaleza del problema que se discute en el documento, a través de una revisión bibliográfica adecuada destacándose las contribuciones del trabajo presentado. Si es pertinente, se puede incluir una sección de Símbolos inmediatamente antes de la Introducción, con una lista de variables y constantes utilizadas en el texto. Este ítem no debe contener numeración de referencia, así como las secciones de Agradecimientos, Referencias y Anexos  
+\subsection{Presentación}
 
-\subsection{Presentación del Texto}
-
-Los manuscritos presentados para su publicación en JIDeTEV deberán tener, entre cinco y diez páginas a columna simple. Los autores deben utilizar unidades del Sistema Internacional (SI o MKS). Los manuscritos que no sigan estas directrices serán rechazados, y los autores serán informados.
-
-El Comité de Revisión no realizará ninguna operación de formateo final del artículo. Su documento debe estar “listo para publicarse” una vez aceptado.
-
+Los manuscritos presentados para su publicación en la Revista +Ingenio deberán
+tener, preferentemente, entre 9 y 15 páginas a columna simple. Los autores deben
+utilizar unidades del Sistema Internacional (SI o MKS). La revista no realizará
+ningún formateo final del artículo. Su documento debe estar “listo para
+publicarse” una vez aceptado.
 
 \subsection{Editando el Texto Principal}
 
-El manuscrito debe prepararse en formato de página A4 (297 mm x 210 mm), como el ejemplo dado por esta plantilla. El procesador de textos recomendado es Word para Windows. No modifique los márgenes de este ejemplo. Si está creando el documento usted mismo, tenga en cuenta los márgenes enumerados en la Tabla 1. La sangría de los párrafos en el texto principal es de 5 mm y 1,15 puntos de espaciado de línea.
+El manuscrito debe prepararse en formato de página A4 (\qty{297}{\milli\meter} x
+\qty{210}{\milli\meter}), como el ejemplo dado por esta plantilla. No modifique
+los márgenes de este ejemplo. Si está creando el documento usted mismo, tenga en
+cuenta los márgenes enumerados en la Tabla~\ref{tb:margenes}.
 
-Todas las dimensiones están en centímetros.
-
-\begin{table}[htbp] \label{tb:margenes}
-\centering\footnotesize
-\caption{Márgenes de página (cm)} % Título por encima de tablas
-\begin{tblr}{
+\begin{table}[htbp]
+  \centering\footnotesize
+  \caption{Márgenes de página} \label{tb:margenes} % Título por encima de tablas
+  \begin{tblr}{
     colspec={X[c,m]|X[c,m]|X[c,m]|X[2,c,m]},
     width=0.55\linewidth,
     hline{1,2,Z} = {1.5pt, solid},
     hline{3-Y} = {solid}
-}
-\textbf{Página}  & \textbf{Arriba} & \textbf{Abajo} & \textbf{Izquierda/Derecha} \\
-Primera & 3,5    & 1,5   & 2,5/1,5           \\
-Resto   & 2,5    & 1,5   & 2,5/1,5  
-\end{tblr}
+    }
+    \textbf{Página}  & \textbf{Arriba} (cm) & \textbf{Abajo} (cm) & \textbf{Izquierda/Derecha} (cm) \\
+    Primera & \num{2,5}    & \num{1,5}   & \num{2,5}/\num{1,5}           \\
+    Resto   & \num{2,5}    & \num{1,5}   & \num{2,5}/\num{1,5}  
+  \end{tblr}
 \end{table}
 
-\textit{Tamaños y estilos de fuente:} Los tamaños de fuente especificados en estas directrices están de
-acuerdo con el procesador de textos Word para Windows y el tipo de letra debe ser Times New
-Roman. La Tabla 2 muestra los tamaños estándar de los caracteres que se deben usar en las diferentes
-secciones del manuscrito.
+\begin{enumerate}
+\item La sangría es de 0,5 cm al inicio de cada párrafo (solo en primera línea).
+\item Tamaños y estilos de fuente: Los tamaños de fuente especificados en estas
+  directrices están de acuerdo con el procesador de textos \textbf{Word de
+    Microsoft Office} y el tipo de letra debe ser TNR.
+\item La Tabla \ref{tb:fuentes} muestra los tamaños estándar de los caracteres
+  que se deben usar en las diferentes secciones del manuscrito. A su vez es un
+  modelo para la construcción de tablas del artículo.
+\end{enumerate}
+
+\begin{table}[htbp]
+  \centering\footnotesize
+  \caption{Características de fuentes (modelo para todas las Tablas del artículo).} \label{tb:fuentes}
+  \begin{tblr}{
+    colspec={Q[c,m]|X[c,m]|X[c,m]|X[c,m]},
+    width=\linewidth,
+    hline{1-3,Z} = {1.5pt, solid},
+    hline{4-Y} = {solid},
+    column{3} = {font=\bfseries},
+    column{4} = {font=\itshape},
+    measure=vbox
+    }
+    \SetCell[c=4]{c} \textbf{Times New Roman (TNR)} \\
+    Tamaño de Letras & Normal & Negrita & Cursiva \\
+    14 & & {Título Principal\\ del Artículo} & \\
+    12 & {Nombres de los Autores y\\ Texto principal} & & \\
+    12 & {Textos (justificados) en:
+         \begin{itemize}[nosep, leftmargin=*]
+         \item Introducción
+         \item Desarrollo
+         \item Materiales y Métodos
+         \item Resultados y Discusión
+         \item Conclusiones
+         \end{itemize}} & {Títulos:
+                          \begin{itemize}[nosep, leftmargin=*]
+                          \item Introducción
+                          \item Desarrollo
+                          \item Materiales y Métodos
+                          \item Resultados y Discusión
+                          \item Conclusiones
+                          \item Referencias
+                          \end{itemize}} & \\
+    10 & Textos de Tablas, & Títulos de Figuras y Tablas & {Afiliaciones y\\ Emails\\ de los autores.\\ Subsecciones} \\
+    10 & {Textos de:
+         \begin{itemize}[nosep, leftmargin=*]
+         \item Resumen
+         \item Abstract
+         \item Palabras clave
+         \item Keywords
+         \item Referencias bibliográficas
+         \end{itemize}} & \SetCell[c=2]{c} {Títulos:\itshape
+                          \begin{itemize}[nosep, leftmargin=*]
+                          \item Resumen,
+                          \item Abstract,
+                          \item Palabras clave
+                          \item Keywords
+                          \end{itemize}} & \\
+  \end{tblr}
+\end{table}
 
 \section{Organización del Artículo}
 
-\subsection{Organización General}
+Los trabajos que se publican en la revista contienen dos secciones: carátula y
+texto principal.
 
-Los trabajos que se publicarán en JIDeTEV deberán contener las siguientes secciones principales: 1) Título; 2) Autores y Afiliaciones; 3) Resumen y Palabras Clave; 4) Introducción; 5) Cuerpo o Texto Principal; 6) Conclusiones y discusiones; 7) Referencias. Este orden debe ser respetado, a menos que los autores deseen agregar algunas secciones, tales como: Simbología, Apéndices y Reconocimientos.
+La carátula contiene: título del artículo; autores; ORCID Y correo electrónico;
+afiliaciones de autores; resumen y palabras clave; abstract y keywords.
 
-\begin{table}[htbp] \label{tb:texto}
-\centering\footnotesize
-\caption{Tipos de letras y tamaños de fuentes} % Título por encima de tablas
-\begin{tblr}{
-    colspec={Q[c,m]|X[c,m]|X[c,m]|X[c,m]},
-    width=0.6\linewidth,
-    hline{1-3,Z} = {1.5pt, solid},
-    hline{4-Y} = {solid}
-}
-\SetCell[c=4]{c} \textbf{Times New Roman – Estilos} \\ % Celda multi-columna
-{\textbf{Tamaño}\\\textbf{(Puntos)}} & \textbf{Normal} & \textbf{Negrita} & \textbf{Cursiva} \\
-10 & Textos en Tablas &  &  \\
-10 & Contenido del Resumen con interlineado de 1 & Títulos de Figuras y Tablas &  \\
-10 & Referencias Bibliográficas & Título: Resumen y Palabras Clave (negrita y cursiva) & Afiliaciones de los autores \\
-12 & Nombres de los autores, Texto principal, como también las Referencias cruzadas & Títulos de las secciones & Títulos de las subsecciones \\
-14 &  & Título del artículo & 
-\end{tblr}
-\end{table}
+El Texto principal incluye: introducción; desarrollo, que puede presentar dos
+apartados: materiales y métodos, y resultados y discusión; conclusiones;
+referencias.
 
-A continuación, se presentan algunos comentarios sobre las principales secciones de los manuscritos. 
-\begin{enumerate}[label=\arabic*)]
-    \item \textit{Título}: El título del artículo debe ser lo más sucinto posible, exponiendo el foco del trabajo de manera muy clara. Debe centrarse en la parte superior de la primera página, en negrita, tamaño de letra 14 puntos, y con mayúscula en la primera letra de cada palabra.
-    
-    \item \textit{Autores y afiliaciones}: Debajo del título (dejando una línea en blanco), también centrado, debe incluirse el nombre del autor o autores. Los nombres intermedios pueden ser abreviados, pero el nombre y el apellido deben escribirse en forma completa (tamaño de letra 12 puntos). Inmediatamente debajo de los nombres de los autores, escriba sus afiliaciones. Deben ser informados: ciudad, provincia o estado y país (tamaño de letra 10 puntos cursiva). Las direcciones electrónicas deben ser informadas justo debajo de las afiliaciones (tamaño de letra 10 puntos).
-    \item \textit{Resumen y palabras clave}: Esta parte es considerada una de las más importantes del trabajo. Es en base a la información contenida en el Resumen y Palabras Clave, que los trabajos técnicos son indexados y almacenados en bases de datos y permiten ser fácilmente encontrados por los motores de búsqueda.
-    
-    El resumen no debe tener más de 200 palabras, indicándose las principales ideas contenidas en el documento, así como también los procedimientos y resultados obtenidos. El resumen no debe ser confundido con la introducción y no debe tener ninguna abreviatura, referencias, figuras, etc. Para escribir el resumen, así como el manuscrito entero, usted debe utilizar la voz pasiva, por ejemplo, “\textbf{...los resultados experimentales obtenidos demuestran que...}” en lugar de “...los resultados experimentales que obtuvimos demuestran que...”. La palabra Resumen debe escribirse tanto en cursiva como en negrita. El texto del Resumen debe escribirse en estilo normal, con interlineado de 1,0.
+Este orden debe ser respetado, a menos que los autores deseen agregar algunas
+secciones, tales como: simbología, apéndices, agradecimientos y anexos.
 
- 
-    Dado que el límite de páginas del manuscrito es de 15, es mejor preparar la presentación inicial en el formato “listo para publicar”, para que se tenga una buena estimación del número de páginas. De esta forma, el esfuerzo necesario para enviar la versión final será por lo tanto, mínimo.
+A continuación, se presentan algunas aclaraciones sobre las partes del artículo.
 
-    Las palabras clave son términos indexados que permiten identificar de forma rápida cuales son los principales temas que aborda el trabajo presentado. El término Palabras clave debe estar en cursiva y negrita. Las palabras clave deben estar en un estilo cursiva.
+\subsection{Título del artículo}
 
-    \item \textit{Introducción}: La Introducción debe preparar al lector para el documento que va a leer, incluyendo una visión histórica del asunto a abordar, presentando de forma clara las principales contribuciones del trabajo. La Introducción no debe ser similar al Resumen y es la primera sección del artículo a ser numerada como una sección.
+El título debe contener como máximo 15 palabras, sin abreviaturas, y su fuente
+debe ser TNR14, centrado, negrita, con mayúscula solo en la primera letra de
+cada palabra; y debe representar el contenido del trabajo.
 
-    \item \textit{Texto del cuerpo}: Los autores deben organizar el texto del cuerpo en varias secciones, las cuales deben contener la información necesaria sobre la propuesta del artículo, facilitando a los lectores su comprensión y viabilizando la reproducibilidad de resultados.
+\subsection{Autores, ORCID, afiliaciones y correo electrónico}
 
-    \item \textit{Conclusiones}: Las conclusiones deben estar escritas lo más claras posibles, destacándose la importancia y contribuciones del trabajo en la respectiva área de investigación. Las ventajas y desventajas del tema propuesto deben ser claramente enfatizadas, así como los resultados obtenidos y las posibles aplicaciones.
+Autores, ORCID deben escribirse en el mismo renglón, debajo del título.
 
-    \item \textit{Referencias}: La citación de referencias a lo largo del texto debe aparecer entre corchetes, justo antes del signo de puntuación al final de la oración en la que se inserta la referencia. Se recomienda utilizar el formato IEEE para incorporar los estilos de las bibliografías relacionadas a los artículos de revistas y conferencias, de libros y de notas técnicas. Los ejemplos se dan en la sección de referencias. Al final de estas directrices, hay un ejemplo de cómo deben insertarse las referencias: Error: no se encontró el origen de la referencia-Error: no se encontró el origen de la referencia o como se describe en Error: no se encontró el origen de la referencia. \textbf{¡Atención por favor! Al insertar la referencia a través de referencias cruzadas, tenga en cuenta que el tamaño de la fuente es 12 puntos y el estilo normal.}
+Los correos deben escribirse debajo de las afiliaciones, separado con coma, en
+función al orden en que fueron escritos los nombres de los autores.
 
-    En caso de añadir secciones adicionales, tales como Simbología, Apéndices y Agradecimientos, deben considerarse las siguientes instrucciones:
+Los nombres de los autores van en letra TNR12, normal, centrado; el primer
+nombre y el/los apellido/s deben escribirse en forma completa, el segundo nombre
+puede ser abreviado (con la primera letra en mayúscula.
 
-    \item \textit{Simbología}: La simbología consiste en la definición de las constantes y variables utilizadas en todo el documento. Su inclusión no es obligatoria y esta sección no debe ser numerada. Si se incluye esta sección, la misma debe preceder a la Introducción. Estas constantes y variables se pueden organizar en una tabla distribuida en el ancho de página entre márgenes.
+Los datos de ORCID y el correo electrónico deben escribirse con la fuente TNR10,
+normal, centrado, con interlineado 1,15 pt.
 
-    En el caso de que los autores no incluyan esta sección, la definición de variables y constantes debe realizarse a lo largo del texto, justo después de que las mismas sean mencionadas. Al inicio de esta guía hay un ejemplo de esta sección opcional.
+Las afiliaciones de los autores se escriben debajo de los nombres de los
+autores, con espaciado anterior y posterior igual a 6 pt. En estas se informa
+dónde trabaja cada autor y deben escribirse en el siguiente orden: Universidad,
+Facultad, Departamento o Laboratorio; luego el lugar: ciudad, provincia, país.
 
-    \item \textit{Agradecimientos y apéndices}: La sección de Agradecimientos a los colaboradores y órganos de financiación, así como las secciones de los Apéndices, no deben ser numeradas y deben estar al final del texto, antes de las referencias bibliográficas. Al final de esta guía hay un ejemplo de estas secciones opcionales.
+\subsection{Resumen, Palabras clave, Abstract, Keywords}
 
-\end{enumerate}
+El resumen puede incluir hasta 200 palabras, en él deben expresarse en el
+objetivo del trabajo; principales materiales, métodos; y resultados. Este no
+debe contener abreviaturas, referencias, figuras ni tablas. Para escribir el
+resumen, así como el manuscrito entero, debe utilizarse la voz pasiva, por
+ejemplo “...los resultados experimentales obtenidos demuestran que...”.
+
+Las palabras clave son términos que permiten identificar de forma rápida los
+principales temas que aborda el trabajo; puede incluirse hasta 10 palabras. En
+base a la información contenida en las Palabras clave (keywords), los trabajos
+son indexados y almacenados en bases de datos para permitir que sean fácilmente
+encontrados por los motores de búsqueda.
+
+Los artículos en portugués o español deben incluir Abstract y Keywords en
+inglés.
+
+\subsection{Introducción}
+
+Introduce al lector en una visión histórica-técnica y científica del problema a
+abordar, de forma clara (con referencias bibliográficas). Se describe el
+problema a resolver desde lo general a lo particular, mencionando las
+aplicaciones y novedades científicas, si las hubiera. En el último párrafo de la
+introducción se presenta el objetivo general del trabajo.
+
+La introducción es la primera sección del texto principal del artículo, a ser
+enumerado como: \textbf{1. Introducción} (ver pág.2).
+
+\subsection{Desarrollo}
+
+Las partes del desarrollo se enumeran: \textbf{2. Materiales y Métodos} y
+\textbf{3. Resultados y Discusión}.
+
+Los materiales son los usados en las experiencias, se describen técnicamente
+cada uno con su respectiva referencia. Los métodos son las técnicas utilizadas
+en el trabajo, como se denominan y en qué consisten, cada uno con su referencia
+bibliográfica.
+
+Los resultados son los datos obtenidos mediante simulación o ensayos
+experimentales, se espera que estos resultados tengan asociadas sus respectivas
+discusiones.
+
+\subsection{Conclusiones}
+
+La sección conclusiones deben ser enumeradas, por ejemplo \textbf{4.
+  Conclusiones}. Estas deben ser claras, y deben destacar la importancia y las
+contribuciones del trabajo presentado.
+
+Las ventajas y desventajas del trabajo deben ser comentadas, así como los
+resultados obtenidos, sus posibles aplicaciones y novedades científicas, si las
+hubiere. Las conclusiones, en general, no se redactan con números, sino con
+palabras que expresen ideas.
+
+En esta sección, los autores también pueden sugerir trabajos futuros para
+continuar con el tema desarrollado.
+
+\subsection{Referencias}
+
+La sección de referencias, no se enumera. 
+
+La citación de referencias [1], [2], etc. a lo largo del texto, debe aparecer
+entre corchetes, TNR12 y estilo normal. Las citas bibliográficas deberán
+consignarse con números correlativos colocados entre corchetes, de tamaño 10 y
+estilo normal. Las referencias serán incorporadas en la lista de referencias
+bibliográficas en el orden en el cual aparecen en el texto. El texto puede
+incluir nombres de autores, pero siempre deberá figurar el número de referencia
+bibliográfica correspondiente.
+
+Se recomienda utilizar el formato IEEE para incorporar los estilos de las
+referencias bibliografías de artículos de revistas y conferencias, de libros y
+de notas técnicas. Los ejemplos se presentan en la sección de referencias. Al
+final de estas directrices, se incluye un ejemplo de cómo deben insertarse.
+
+\subsection{Simbología, Apéndice y Agradecimientos}
+
+En caso de añadir estas secciones, deben considerarse que ninguna de ellas va numerada y deben respetarse las siguientes instrucciones:
+\begin{description}
+  \item[Simbología:] La simbología consiste en la definición de las constantes y variables utilizadas en todo el documento. Su inclusión no es obligatoria. Si se incluye esta sección, la misma debe preceder a la introducción. Estas constantes y variables se pueden organizar en una tabla distribuida a lo ancho de página entre márgenes (ver pág.1).
+  
+  En el caso de que los autores no incluyan esta sección, la definición de las variables y constantes deberá incorporarse a lo largo del texto, inmediatamente después de su primera mención.
+
+  \item[Agradecimientos y apéndices:] La sección de Agradecimientos a los colaboradores y órganos de financiación, así como las secciones de los apéndices, no deben ser numeradas y deben estar al final del texto, antes de las referencias bibliográficas. Al final de esta guía se incluye un ejemplo de estas secciones opcionales.
+\end{description}
 
 \subsection{Fase Final}
 
-Se supone que los autores tendrán en cuenta rigurosamente los márgenes establecidos. En caso de no ser así se le pedirá que reenvíe el documento para que así lo cumpla, retrasando de esta manera la preparación de los contenidos de la publicación de la Jornada en la plataforma.
+Los autores tendrán en cuenta rigurosamente los márgenes establecidos. En caso de no ser así se les pedirá que reenvíen el documento para su corrección, retrasando de esta manera la preparación de los contenidos de la revista.
+
+\subsection{Márgenes de página}
+
+Es muy importante respetar estos márgenes, ya que son necesarios para desarrollar la edición final.
+
+\subsection{Figuras y Creación del PDF}
+
+Todas las figuras deben estar incrustadas en el documento. Cuando se incluya una imagen, debe asegurarse de insertar la imagen real en lugar de un enlace a su computadora local.
+
+En la medida de lo posible las figuras y las tablas deben insertarse en el texto justo después de que se mencionen por primera vez; si esto no fuera posible, deben ubicarse lo más próximas posibles a dicha mención. La resolución de las figuras debe ser de al menos 300 ppp y preferentemente deben utilizarse archivos vectoriales para una mejor calidad de impresión (EMF o EPS).
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/Magnetización en función del campo aplicado.png}
+    \includegraphics[width=0.65\linewidth]{images/figura1.pdf}
     \caption{Magnetización en función del campo aplicado. \\ (Observe que hay un punto después del número de figura, seguido por un espacio).}
     \label{fig:fig1}
 \end{figure}
 
-\subsection{Márgenes de página}
+Los títulos de las tablas deben estar por encima de las tablas y los títulos de las figuras deben estar por debajo de las figuras. 
+Las tablas deben tener título, designadas por la palabra Tabla y numeradas en secuencia por números arábigos. Los títulos de las tablas deben estar centrados y en negrita, como se muestra en la Tabla \ref{tb:fuentes} (ver pág. \pageref{tb:fuentes}).
 
-Es muy importante mantener estos márgenes. Son necesarios para poner información de la publicación de la Jornada y los números de página.
+Las figuras también necesitan títulos y están designados por la abreviatura \textbf{Fig.}, y numerados con números arábigos en secuencia. El título de la figura debe estar \textbf{centrado y en negrita}, como se muestra en el ejemplo de la \textbf{Fig. \ref{fig:fig1}}. Los títulos de las figuras se designan también con \textbf{Fig. x} en el texto. La designación de las partes de una figura se realiza añadiendo letras minúsculas a los números de las figuras comenzando con la letra a, por ejemplo, \textbf{Fig. 1}~(a).
 
-\subsection{Figuras y Creación del PDF}
+Pueden colocarse dos figuras contiguas, una al lado de la otra, introduciendo una tabla de dos columnas y una fila, sin bordes y con autoajuste a la ventana (márgenes). Las figuras se insertan una en cada celda de esta tabla. Esta disposición sirve, por ejemplo, para comparar dos resultados diferentes.
 
-Todas las figuras deben estar incrustadas en el documento. Cuando incluya una imagen, asegúrese de insertar la imagen real en lugar de un enlace a su computador local. En la medida de lo posible, utilice las herramientas de conversión a PDF estándares Adobe Acrobat o Ghostscript para obtener los mejores resultados.
+Para entender mejor las gráficas, la definición de sus ejes se debe hacer con palabras y no con letras, excepto cuando se refiere a formas de onda. Las unidades deben estar entre paréntesis. Por ejemplo, utilice la denominación “Magnetización (\unit{A/m})” o “Magnetización (\unit{A.m^{-1}})”, en lugar de “M (\unit{A.m^{-1}})”. 
 
-\section{Otras Instrucciones}
+Los multiplicadores pueden ser una fuente de confusión. Escribir “Magnetización (\unit{kA/m})” o “Magnetización (\qty{e3}{A/m})”. No escriba “Magnetización (\unit{A/m}) \(\times\) 1000”, porque el lector no sabría si la etiqueta del eje superior de la Fig. 1 es \qty{15000}{A/m} o \qty{0,015}{A/m}.
 
-\subsection{Figuras y Tablas}
+Las figuras deben, preferentemente, realizarse con trazos negros y con fondo blanco, ya que la versión impresa por lo general es en blanco y negro. Además, cuando existan diferentes tipos de líneas en el mismo gráfico, deben utilizarse diferentes estilos de línea. 
 
-Las figuras y las tablas deben insertarse en el texto justo después de que se mencionen por primera vez; si es necesario, utilice todo el ancho entre los márgenes. La resolución de las figuras debe ser de al menos 300 ppp y preferentemente deben utilizarse archivos vectoriales para una mejor calidad de impresión (EMF o EPS). Para insertar imágenes en el procesador de texto, coloque el cursor en el punto de inserción y utilice \textbf{Insertar - Imagen - De archivo} o copie la imagen en el portapapeles de Windows y, a continuación, utilice \textbf{Edición - Pegado especial - Imagen (metarchivo mejorado)}.
-
-Los títulos de las tablas deben estar por encima de las tablas y los títulos de las figuras deben estar por debajo de las figuras. Las tablas deben tener título, designadas por la palabra Tabla y numeradas en secuencia por números arábigos. Los títulos de las tablas deben estar centrados y en negrita, como se muestra en la Tabla 1. \textbf{¡Atención por favor! Al insertar el título de la tabla a través de referencias cruzadas, tenga en cuenta que el tamaño de la fuente es de 12 puntos y estilo normal}.
-
-Las figuras también necesitan títulos y están designados por la abreviatura Fig., y numerados con números arábigos en secuencia. El título de la figura debe estar centrado y en negrita, como se muestra en el ejemplo de la Fig. 1. Los títulos de las figuras se designan también con Fig. x en el texto. La designación de las partes de una figura se realiza añadiendo letras minúsculas a los números de las figuras comenzando con la letra a, por ejemplo, Fig. 1 (a). Pueden colocarse dos figuras contiguas, una al lado de la otra, introduciendo una tabla de 2 columnas y una fila, sin bordes y con autoajuste a la ventana (márgenes). Las figuras se insertan una en cada celda de esta tabla. Esta disposición sirve, por ejemplo, para comparar dos resultados diferentes.
-
-Para entender mejor las gráficas, la definición de sus ejes se debe hacer con palabras y no con letras, excepto cuando se refiere a formas de onda. Las unidades deben estar entre paréntesis. Por ejemplo, utilice la denominación “Magnetización (\si{\ampere\per\meter})” o “Magnetización (\si{\ampere\cdot\meter^{-1}})”, en lugar de “\( M~(\si{\ampere\per\meter}) \)”. Los multiplicadores pueden ser generalmente una fuente de confusión. Escriba “Magnetización (\si{\kilo\ampere\per\meter})” o “Magnetización (\SI{1e3}{\ampere\per\meter})”. No escriba “Magnetización (\si{\ampere\per\meter}) × 1000” porque el lector no sabría si la etiqueta del eje superior de la Fig. 1 es \SI{15000}{\ampere\per\meter} o \SI{0.015}{\ampere\per\meter}.
-
-Las figuras deben preferentemente realizarse con trazos negros y con fondo blanco. Sus líneas deben ser gruesas. Además, cuando existen diferentes tipos de líneas en el mismo gráfico, debe utilizarse diferentes estilos de línea. Además, para mejorar sus gráficos, utilice un tipo de letra legible con un tamaño adecuado, como se muestra en la Fig. \ref{fig:fig2}; aproximadamente de 10 a 12 puntos para los números de los ejes y de 12 a 14 puntos para las etiquetas de los ejes.
+Para mejorar los gráficos, utilice un tipo de letra legible con un tamaño adecuado, como se muestra en la Fig. \ref{fig:fig2}; aproximadamente de 10 a 12 puntos para los números de los ejes y de 12 a 14 puntos para las etiquetas de los ejes.
 
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\linewidth]{images/Respuesta al escalón unitario del sistema de control.png}
-    \caption{Respuestas al escalón unitario del sistema de control compensado (línea continua) y no compensado (línea de trazos).}
-    \label{fig:fig2}
+  \centering
+  \includegraphics[width=0.65\linewidth]{images/figura2.pdf}
+  \caption{Respuestas al escalón unitario del sistema de control compensado (línea continua)\\ y no compensado (línea de trazos).}
+  \label{fig:fig2}
 \end{figure}
 
+\subsection{Abreviaciones y Acrónimos}
+
+Deben definir las abreviaturas y los acrónimos la primera vez que se utilizan en el texto, incluso después de que ya se hayan definido en el resumen, por ejemplo “...Modulación de ancho de pulso (PWM)...” o “Fuentes de alimentación ininterrumpida (UPS)”. No es necesario definir las abreviaturas como IEEE, SI, CA y CC. Las abreviaturas que incorporan puntos no deben tener espacios: tipo “C.N.R.S.” y no “C. N. R. S.”. 
+
+No utilice abreviaturas en el título a menos que sea inevitable.
 
 \section{Consejos Útiles}
 
 \subsection{Ecuaciones}
 
-Utilice una tabla de 2 columnas y una fila, sin bordes, como se muestra en (). Numere las
-ecuaciones consecutivamente con números arábigos entre paréntesis, justificadas al margen derecho;
-como en (). En la primera columna va la ecuación centrada en la celda y en la segunda columna se
-escribe el número de la ecuación entre paréntesis; centrada en la celda y justificada al margen derecho.
-Poner signos de puntuación en las ecuaciones cuando forman parte de una oración, como en
+Utilice una tabla de dos columnas y una fila, sin bordes, como se muestra en \eqref{eq:1}. Numere las ecuaciones consecutivamente con números arábigos entre paréntesis, justificadas al margen derecho; como en \eqref{eq:1}. 
+
+En la primera columna va la ecuación centrada en la celda y, en la segunda columna, se escribe el número de la ecuación entre paréntesis, centrado en la celda y justificado al margen derecho. 
+Coloque los signos de puntuación en las ecuaciones cuando formen parte de una oración, como en 
 
 \begin{equation} \label{eq:1}
-    \begin{split}
-            \int^{r_2}_0 F(r, \varphi)\ dr\ d\varphi = \left[\sigma r_2 / (2\mu_0)\right]
-    \end{split}
-    \qquad
-    \begin{split}
-        \int^\infty_0 \exp(-\lambda\ |z_j-z_i|)\lambda^{-1}\ J_1(\lambda r_2)\ J_0(\lambda r_i) d\lambda
-    \end{split}
+  \begin{split}
+    \int^{r_2}_0 F(r, \varphi)\ dr\ d\varphi = \left[\sigma r_2 / (2\mu_0)\right]
+  \end{split}
+  \qquad
+  \begin{split}
+    \int^\infty_0 \exp(-\lambda\ |z_j-z_i|)\lambda^{-1}\ J_1(\lambda r_2)\ J_0(\lambda r_i) d\lambda.
+  \end{split}
 \end{equation}
 
-Se recomienda utilizar la tabla de las ecuaciones \eqref{eq:1} y \eqref{eq:2} la cual ya está formateada para la presente plantilla.
+Se recomienda utilizar la tabla de las ecuaciones \eqref{eq:1} y \eqref{eq:2} la
+cual ya está formateada para la presente plantilla.
 
 \begin{equation} \label{eq:2}
-    u_c(t) = K_p \left[e_v(t)+\tau_d\frac{de_v(t)}{dt}\right]
+  u_c(t) = K_p \left[e_v(t)+\tau_d\frac{de_v(t)}{dt}\right]
 \end{equation}
-donde: $u_c$ es la acción de control; $K_p$ es la ganancia proporcional; $e_v$ es la señal de error de tensión y $\tau_d$ es la constante de tiempo derivativa.
+donde: $u_c$ es la acción de control; $K_p$ es la ganancia proporcional; $e_v$
+es la señal de error de tensión y $\tau_d$ es la constante de tiempo derivativa.
 
-Utilice paréntesis para evitar ambigüedades en los denominadores. Asegúrese de que los símbolos
-de su ecuación hayan sido definidos antes de que aparezca la ecuación o inmediatamente después.
-Escribir en cursiva los símbolos de unidades o constantes (T podría referirse a la temperatura, pero T
-también es la unidad tesla). Las variables instantáneas deben escribirse en cursiva y en minúsculas.
-Las constantes deben estar escritas en cursiva y en mayúsculas. Las matrices y vectores deben estar
-escritos en negrita. Recomendamos a los autores que utilicen los estándares de la IEEE para la
-nomenclatura de variables.
+Utilice paréntesis para evitar ambigüedades en los denominadores. Asegúrese de
+que los símbolos de su ecuación hayan sido definidos antes de que aparezca la
+ecuación o inmediatamente después. Escribir en cursiva los símbolos de unidades
+o constantes (T podría referirse a la temperatura, pero T también es la unidad
+tesla). Las variables instantáneas deben escribirse en cursiva y en minúsculas.
+Las constantes deben estar escritas en cursiva y en mayúsculas. Las matrices y
+vectores deben estar escritos en negrita. Recomendamos a los autores que
+utilicen los estándares de la IEEE para la nomenclatura de variables.
 
-Cuando hace referencia a una ecuación refiérase a “\eqref{eq:1}”, y no “Ec. \eqref{eq:1}” o “ecuación \eqref{eq:1}”, excepto
-al comienzo de la oración: “La ecuación \eqref{eq:1} es...”
-
-Si utiliza Word, utilice Microsoft Equation Editor o MathType para las ecuaciones de su
-documento (Insertar - Objeto - Crear nuevo - Microsoft Equation Editor o MathType Equation). La
-opción “Flotar sobre el texto” no debe seleccionarse.
+Cuando hace referencia a una ecuación refiérase a “\eqref{eq:1}”, y no “Ec.
+\eqref{eq:1}” o “ecuación \eqref{eq:1}”, excepto al comienzo de la oración: “La
+ecuación \eqref{eq:1} es...”
 
 \subsection{Otras Recomendaciones}
 
-Utilice un espacio después del punto seguido y de los dos puntos. Evite el uso de participios, como
-“Usando (1), se calculó el potencial”. [No está claro quién o qué utilizó (1)]. En su lugar, escriba “El
-potencial se calculó usando (1)” o “Usando (1) se calculó el potencial”. En la final de una oración no
-use guiones ni agregue espacios para ajustar la oración. Evite truncar la palabra al final de la oración,
-utilizando (Mayúsculas + Enter) o vaya a la barra de opciones en: Diseño de página – Saltos – Ajuste
-del texto.
-
-\section{Referencias}
-
-Las citas bibliográficas deberán consignarse con números correlativos colocados entre corchetes,
-Error: no se encontró el origen de la referencia de tamaño igual al del texto y estilo normal. El texto
-puede incluir nombres de autores, pero conjuntamente figurar el número de referencia bibliográfica
-correspondiente. Las referencias serán incorporadas en la lista en el orden en el cual aparecen en el
-texto. No se incluirán referencias que no figuran en el texto. El modelo de las mismas se describe en
-base a ejemplos en la sección referencias.
-
-\section{Conclusiones}
-
-La sección de conclusiones es extremadamente necesaria ya que las mismas permiten revisar las
-contribuciones más importantes del trabajo. Es importante agregar que el resumen no debe ser
-replicado en las conclusiones. Las conclusiones deben describir con precisión la importancia del
-trabajo propuesto, las contribuciones y los resultados obtenidos. En esta sección los autores pueden
-sugerir algunas aplicaciones o trabajos futuros relacionados con su propuesta.
+Utilice un espacio después del punto seguido y de los dos puntos. Evite el uso
+de participios, como “Usando (1), se calculó el potencial”. [No está claro quién
+o qué utilizó (1)]. En su lugar, escriba “El potencial se calculó usando (1)” o
+“Usando (1) se calculó el potencial”.
+Al final de una oración, no use guiones ni agregue espacios para ajustar la oración.
 
 \section*{Agradecimientos} % Opcional
 
-Este trabajo ha sido llevado a cabo gracias al apoyo de la Agencia Nacional de Investigaciones y
-el….Este proyecto fue financiado por la ANPCyT. Los autores agradecen a Samuel Jackson por la
-colaboración prestada en la preparación de este artículo.
+Este trabajo ha sido llevado a cabo gracias al apoyo de la Agencia Nacional de Promoción de la Investigación, el Desarrollo Tecnológico y la Innovación (ANPCyT). 
+
+Los autores agradecen a Samuel Jackson por la colaboración prestada en la preparación de este artículo.
 
 \appendix
 \renewcommand\thesection{Apéndice \Alph{section}} % Incluir 'Apéndice' en la etiqueta

@@ -1,0 +1,1 @@
+/home/fab/Projects/thesis-presentation/src/bachelor-thesis/.vscode/ltex.dictionary.es-AR.txt
