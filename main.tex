@@ -68,12 +68,15 @@ includefoot]{geometry}   % 'includefoot' asegura que el pie de página quede den
 % ==============================================================================
 % 6. TIPOGRAFÍA Y FUENTES
 % ==============================================================================
+\usepackage[T1]{fontenc}  % Codificación de fuentes de 8 bits para soporte correcto de acentos y caracteres especiales.
 \usepackage{setspace}
 \setstretch{1.15}        % Establece el interlineado del texto a 1.15.
 
 % newtxtext y newtxmath cargan la tipografía Times New Roman para texto y matemáticas.
 \usepackage{newtxtext}
 \usepackage{newtxmath}
+\usepackage{microtype}   % Optimiza el espaciado y la justificación del texto automáticamente.
+\usepackage[htt]{hyphenat} % Habilita división silábica (guionado) en texto de ancho fijo (\texttt).
 
 % ==============================================================================
 % 7. UNIDADES Y MATEMÁTICAS AVANZADAS
@@ -238,13 +241,13 @@ includefoot]{geometry}   % 'includefoot' asegura que el pie de página quede den
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% S Í M B O L O S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Para agregar nuevos símbolos a la tabla, use la sintaxis: \nomenclature{<símbolo>}{<descripción>}
-% Ejemplo: \nomenclature{$F$}{Fuerza (\si{\newton})}
+% Ejemplo: \nomenclature{$F$}{Fuerza (\unit{\newton})}
 \nomenclature{$S$}{Potencia aparente (TNR10)}
 \nomenclature{$V_o$}{Tensión controlada de salida (unidades)}
-\nomenclature{$V_i$}{Volumen inicial (\si{\litre})}
-\nomenclature{$V_f$}{Volumen final (\si{\litre})}
-\nomenclature{$P_p$}{Presión parcial (\si{atm})}
-\nomenclature{$T_a$}{Temperatura absoluta (\si{\kelvin})}
+\nomenclature{$V_i$}{Volumen inicial (\unit{\litre})}
+\nomenclature{$V_f$}{Volumen final (\unit{\litre})}
+\nomenclature{$P_p$}{Presión parcial (\unit{atm})}
+\nomenclature{$T_a$}{Temperatura absoluta (\unit{\kelvin})}
 \vspace{-0.8em}
 \printnomenclature
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -323,8 +326,8 @@ del documento, se deben contemplar los márgenes especificados en la Tabla~\ref{
     hline{3-Y} = {solid}
     }
     \textbf{Página}  & \textbf{Arriba} (cm) & \textbf{Abajo} (cm) & \textbf{Izquierda/Derecha} (cm) \\
-    Primera & \num{2,5}    & \num{1,5}   & \num{2,5}/\num{1,5}           \\
-    Resto   & \num{2,5}    & \num{1,5}   & \num{2,5}/\num{1,5}  
+    Primera & \num{2.5}    & \num{1.5}   & \num{2.5}/\num{1.5}           \\
+    Resto   & \num{2.5}    & \num{1.5}   & \num{2.5}/\num{1.5}  
   \end{tblr}
 \end{table}
 
@@ -489,8 +492,8 @@ En esta plantilla, la gestión de las referencias bibliográficas está completa
 Para incluir y citar referencias en su artículo, siga estas pautas:
 \begin{description}
   \item[Base de datos de referencias:] Añada todos los recursos bibliográficos en formato BibTeX dentro del archivo \texttt{references.bib}.
-  \item[Citas en el texto:] Para realizar una cita en el manuscrito, utilice el comando \texttt{\textbackslash cite\{clave\_de\_la\_cita\}} (por ejemplo, \texttt{\textbackslash cite\{nombre\_autor\_anio\}}). El motor de compilación numerará y formateará automáticamente la cita entre corchetes, por ejemplo, [1].
-  \item[Generación de la lista:] La lista final de referencias se imprime automáticamente al final del documento mediante el comando \texttt{\textbackslash printbibliography}, ordenándose en el orden de aparición del texto según el estilo IEEE. No se incluirán en la lista las referencias que no hayan sido citadas en el documento.
+  \item[Citas en el texto:] Para realizar una cita en el manuscrito, utilice el comando \texttt{\textbackslash cite\{\allowbreak clave\_\allowbreak de\_\allowbreak la\_\allowbreak cita\}} (por ejemplo, \texttt{\textbackslash cite\{\allowbreak nombre\_\allowbreak autor\_\allowbreak anio\}}). El motor de compilación numerará y formateará automáticamente la cita entre corchetes, por ejemplo, [1].
+  \item[Generación de la lista:] La lista final de referencias se imprime automáticamente al final del documento mediante el comando \texttt{\textbackslash print\allowbreak bibliography}, ordenándose en el orden de aparición del texto según el estilo IEEE. No se incluirán en la lista las referencias que no hayan sido citadas en el documento.
 \end{description}
 
 \subsection{Simbología, Apéndice y Agradecimientos}
@@ -518,10 +521,10 @@ En \LaTeX{}, las figuras y las tablas se tratan como elementos "flotantes". Su p
 
 Para la inserción y referencia de estos elementos de forma correcta, se deben seguir las siguientes directrices:
 \begin{description}
-  \item[Referencias cruzadas:] Se debe evitar el uso de expresiones de ubicación física (como “la tabla de abajo” o “la figura de la página siguiente”). En su lugar, se asocian etiquetas únicas mediante el comando \texttt{\textbackslash label\{clave\}} y se hace referencia a ellas de forma dinámica con \texttt{\textbackslash ref\{clave\}} (por ejemplo, la Fig.~\ref{fig:fig1} o la Tabla~\ref{tb:fuentes}).
-  \item[Títulos y Leyendas:] Los títulos de las tablas deben situarse por encima del elemento, mientras que los de las figuras se colocan por debajo. El formato de las leyendas (estilo negrita, tamaño de fuente de 10pt y alineación centrada) es aplicado de forma automática, por lo que únicamente se requiere el uso del comando \texttt{\textbackslash caption\{...\}} sin adición de formatos manuales.
+  \item[Referencias cruzadas:] Se debe evitar el uso de expresiones de ubicación física (como “la tabla de abajo” o “la figura de la página siguiente”). En su lugar, se asocian etiquetas únicas mediante el comando \texttt{\textbackslash label\allowbreak \{clave\}} y se hace referencia a ellas de forma dinámica con \texttt{\textbackslash ref\allowbreak \{clave\}} (por ejemplo, la Fig.~\ref{fig:fig1} o la Tabla~\ref{tb:fuentes}).
+  \item[Títulos y Leyendas:] Los títulos de las tablas deben situarse por encima del elemento, mientras que los de las figuras se colocan por debajo. El formato de las leyendas (estilo negrita, tamaño de fuente de 10pt y alineación centrada) es aplicado de forma automática, por lo que únicamente se requiere el uso del comando \texttt{\textbackslash caption\allowbreak \{...\}} sin adición de formatos manuales.
   \item[Tablas profesionales:] En esta plantilla, las tablas se construyen preferentemente mediante el entorno \texttt{tblr} del paquete \texttt{tabularray} (la guía de uso detallada se encuentra en \url{https://ctan.org/pkg/tabularray}). Esto permite obtener un espaciado homogéneo de forma automática sin recurrir a ajustes manuales.
-  \item[Imágenes:] Para la inserción de imágenes, se utiliza el entorno \texttt{figure} junto con el comando \texttt{\textbackslash includegraphics[width=...]}. Se debe asegurar el empleo de imágenes de alta calidad (mínimo 300 ppp) y preferentemente vectoriales (PDF, EPS).
+  \item[Imágenes:] Para la inserción de imágenes, se utiliza el entorno \texttt{figure} junto con el comando \texttt{\textbackslash includegraphics\allowbreak [width=...]}. Se debe asegurar el empleo de imágenes de alta calidad (mínimo 300 ppp) y preferentemente vectoriales (PDF, EPS).
 \end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% F I G U R A S %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -544,9 +547,9 @@ Para la inserción y referencia de estos elementos de forma correcta, se deben s
 
 Para asegurar la coherencia tipográfica de las unidades en el documento, se utiliza el paquete \texttt{siunitx} (cuya documentación está disponible en \url{https://ctan.org/pkg/siunitx}). Esto evita espaciados incorrectos o saltos de línea huérfanos entre un número y su unidad:
 \begin{description}
-  \item[Unidades aisladas:] Se definen mediante el comando \texttt{\textbackslash unit\{...\}}. Por ejemplo, la denominación “Magnetización (\unit{A/m})” o “Magnetización (\unit{A.m^{-1}})”.
-  \item[Cantidades:] Para asociar un valor numérico a su unidad, se emplea el comando \texttt{\textbackslash qty\{valor\}\{unidad\}}, como por ejemplo \qty{15000}{A/m} o \qty{0,015}{A/m}.
-  \item[Multiplicadores:] Se recomienda el uso de prefijos del SI (como \unit{kA/m}) o potencias mediante la sintaxis \texttt{\textbackslash qty\{e3\}\{A/m\}}. Se debe evitar el empleo de la notación informal “$\times$ 1000”.
+  \item[Unidades aisladas:] Se definen mediante el comando \texttt{\textbackslash unit\allowbreak \{...\}}. Por ejemplo, la denominación “Magnetización (\unit{A/m})” o “Magnetización (\unit{A.m^{-1}})”.
+  \item[Cantidades:] Para asociar un valor numérico a su unidad, se emplea el comando \texttt{\textbackslash qty\allowbreak \{valor\}\allowbreak \{unidad\}}, como por ejemplo \qty{15000}{A/m} o \qty{0.015}{A/m}.
+  \item[Multiplicadores:] Se recomienda el uso de prefijos del SI (como \unit{kA/m}) o potencias mediante la sintaxis \texttt{\textbackslash qty\allowbreak \{e3\}\allowbreak \{A/m\}}. Se debe evitar el empleo de la notación informal “$\times$ 1000”.
 \end{description}
 El punto intermedio ($\cdot$) para productos de unidades en expresiones como \unit{A.m^{-1}} es generado de forma automática a través de la configuración global de la plantilla.
 
@@ -600,9 +603,9 @@ donde: $u_c$ es la acción de control; $K_p$ es la ganancia proporcional; $e_v$ 
 Para la escritura matemática en el manuscrito, se deben considerar las siguientes recomendaciones:
 \begin{description}
   \item[Signos de puntuación:] Las ecuaciones que forman parte de una oración deben finalizar con el signo de puntuación correspondiente (coma o punto), tal como se muestra en \eqref{eq:1}.
-  \item[Variables y Constantes:] Por defecto, el modo matemático presenta las variables en cursiva, lo cual es adecuado para parámetros físicos (por ejemplo, $t$ o $T$). Las constantes matemáticas y unidades físicas se deben escribir en letra redonda (por ejemplo, la unidad de inducción magnética se escribe $\mathrm{T}$ o utilizando el comando \texttt{\textbackslash unit\{\dots\}}).
-  \item[Vectores y Matrices:] Se recomienda representarlos con tipografía en negrita empleando comandos como \texttt{\textbackslash mathbf\{\dots\}}.
-  \item[Referencias a ecuaciones:] Se debe emplear siempre el comando \texttt{\textbackslash eqref\{clave\}} en lugar de transcribir la numeración manualmente. Esto genera automáticamente los paréntesis y el enlace de hipertexto (por ejemplo, “el resultado de \eqref{eq:1}”). Asimismo, se aconseja evitar términos como “Ec. \eqref{eq:1}” o “ecuación \eqref{eq:1}”, a menos que se sitúen al inicio de una oración (por ejemplo, “La ecuación \eqref{eq:1} representa\dots”).
+  \item[Variables y Constantes:] Por defecto, el modo matemático presenta las variables en cursiva, lo cual es adecuado para parámetros físicos (por ejemplo, $t$ o $T$). Las constantes matemáticas y unidades físicas se deben escribir en letra redonda (por ejemplo, la unidad de inducción magnética se escribe $\mathrm{T}$ o utilizando el comando \texttt{\textbackslash unit\allowbreak \{\dots\}}).
+  \item[Vectores y Matrices:] Se recomienda representarlos con tipografía en negrita empleando comandos como \texttt{\textbackslash mathbf\allowbreak \{\dots\}}.
+  \item[Referencias a ecuaciones:] Se debe emplear siempre el comando \texttt{\textbackslash eqref\allowbreak \{clave\}} en lugar de transcribir la numeración manualmente. Esto genera automáticamente los paréntesis y el enlace de hipertexto (por ejemplo, “el resultado de \eqref{eq:1}”). Asimismo, se aconseja evitar términos como “Ec. \eqref{eq:1}” o “ecuación \eqref{eq:1}”, a menos que se sitúen al inicio de una oración (por ejemplo, “La ecuación \eqref{eq:1} representa\dots”).
 \end{description}
 
 \subsection{Otras Recomendaciones}

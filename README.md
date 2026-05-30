@@ -131,7 +131,7 @@ La estructura requiere tanto la versión en español como en inglés (*Abstract*
 ### 3. Agregar Símbolos
 Para incorporar términos a la sección de Simbología, use el comando `\nomenclature`:
 ```latex
-\nomenclature{$E$}{Energía de activación (\si{\joule\per\mole})}
+\nomenclature{$E$}{Energía de activación (\unit{\joule\per\mole})}
 ```
 
 ### 4. Insertar Figuras y Tablas
